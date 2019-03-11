@@ -1,5 +1,5 @@
 # The URL the site will be built for
-base_url = "https://rust-dsp.github.io"
+base_url = "https://rust.audio"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
@@ -11,5 +11,9 @@ highlight_code = true
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
+title = "rust.audio"
+
 [extra]
-# Put all your custom variables here
+logo = "/media/logo.svg"
+nav = [ { title = "Home", url = "/" }
+      , { title = "Link 2", url = "/"} ]

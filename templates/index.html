@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<section class="vh-75-l vh-100 flex justify-center bg-near-white black absolute w-100 flex-column">
+    <div class="center">
+        {% if config.extra.logo %}
+            <img src="{{ config.extra.logo }}" class="w5"/>
+        {% else %}
+            <h1 class="center tc f1">{{ config.title }}</h1>
+        {% endif %}
+    </div>
+    <div class="center nav-links">
+        {% if config.extra.nav %}
+            <nav class="w-100 mw5 mt4">
+                <div class="flex">
+                    {% for link in config.extra.nav %}
+                        <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
+                    {% endfor %}
+                </div>
+            </nav>
+        {% endif %}
+    </div>
+</section>
+<div class="spacer vh-75-l vh-100"></div>
+
+<section class="vh-100">
+</section>
+{% endblock content %}

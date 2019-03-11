@@ -1,0 +1,16 @@
+.animated-border {
+    height: 4px;
+    background: linear-gradient(90deg, #562D6A 0%, #AB3D6A 25%, #562D6A 50%, #AB3D6A 75%, #562D6A 100%);
+    background-size: 200% 200%;
+    animation: AnimationName 2s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes AnimationName {
+    0% {
+        background-position: 0% 0%
+    }
+    100% {
+        background-position: 100% 0%
+    }
+}
