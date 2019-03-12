@@ -15,5 +15,7 @@ title = "rust.audio"
 
 [extra]
 logo = "/media/logo.svg"
-nav = [ { title = "Home", url = "/" }
-      , { title = "Link 2", url = "/"} ]
+nav = [ { title = "Resources", url = "/#resources" }
+      , { title = "Latest", url = "/#latest"} 
+      , { title = "About", url = "/#about"} 
+      ]

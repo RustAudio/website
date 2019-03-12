@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% import "macros.html" as m %}
 
 {% block content %}
 <section class="vh-75-l vh-100 flex justify-center bg-near-white black absolute w-100 flex-column">
@@ -11,7 +12,7 @@
     </div>
     <div class="center nav-links">
         {% if config.extra.nav %}
-            <nav class="w-100 mw5 mt4">
+            <nav class="w-100 mt4">
                 <div class="flex">
                     {% for link in config.extra.nav %}
                         <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
@@ -23,6 +24,30 @@
 </section>
 <div class="spacer vh-75-l vh-100"></div>
 
-<section class="vh-100">
+{{ m::hash_link(name="resources") }}
+<section class="vh-100 ph3 pv5 mw7 center">
+    <h1 class="center f2 ttu tracked tl tc-m">Resources</h1>
+    {# Here we will put subsections with sliders for each resource #}
 </section>
+
+{{ m::hash_link(name="latest") }}
+<div class="bg-near-white">
+    <section class="vh-100 ph3 pv5 mw7 center">
+        <h1 class="center f2 ttu tracked tl tc-m">Latest</h1>
+        <a href="#" class="no-underline black">
+            <article class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
+                <h2>Article Name</h2>
+                <p class="serif">Truncated sample of a potential article</p>
+                {# articles here #}
+            </article>
+        </a>
+    </section>
+</div>
+
+{{ m::hash_link(name="about") }}
+<div class="bg-near-black white">
+    <section class="ph3 pv5 mw7 center">
+        <h1 class="center f2 ttu tracked tl">About</h1>
+    </section>
+</div>
 {% endblock content %}

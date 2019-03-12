@@ -7,14 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config.title }}</title>
     <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css?family=Barlow:400,700|Merriweather:400,400i,700|Inconsolata:400,700"
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,700|PT+Serif:400,400i,700|Inconsolata:400,700"
         rel="stylesheet">
     {% block extra_head %}{% endblock extra_head %}
 </head>
 
 <body class="sans-serif">
     {% if config.extra.nav %}
-        <nav class="bg-white shadow-3 fixed w-100">
+        <nav class="bg-white shadow-3 fixed w-100" style="z-index: 10000;">
             <div class="center mw7 flex items-center justify-between">
                 {% if config.extra.logo %}
                     <a href="/">
@@ -34,7 +34,7 @@
     {% block extra_body %}{% endblock extra_body %}
     <footer class="bg-near-white w-100">
         <div class="center mw7 flex items-center">
-            <a href="//u9h.design" target="_blank" class="ph3 pv4 reverse-dim db">
+            <a href="//u9h.design" target="_blank" class="ph3 pv4 dim grow db">
                 <img src="/media/designed.svg" style="width: 100px;" class="db"/>
             </a>
         </div>

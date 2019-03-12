@@ -1,8 +1,3 @@
-// customized
-$navy: #0B1D2F !default;
-$near-white: #F9F7F7 !default;
-$black: #121416 !default;
-$box-shadow-3: -1px 0px 20px rgba(0, 0, 0, 0.1) !default;
 // Converted Variables
 $font-size-headline: 6rem !default;
 $font-size-subheadline: 5rem !default;
@@ -67,7 +62,6 @@ $box-shadow-1: 0px 0px 4px 2px rgba( 0, 0, 0, 0.2) !default;
 $box-shadow-2: 0px 0px 8px 2px rgba( 0, 0, 0, 0.2) !default;
 $box-shadow-4: 2px 2px 8px 0px rgba( 0, 0, 0, 0.2) !default;
 $box-shadow-5: 4px 4px 8px 0px rgba( 0, 0, 0, 0.2) !default;
-$near-black: #111 !default;
 $dark-gray: #333 !default;
 $mid-gray: #555 !default;
 $gray: #777 !default;
@@ -134,3 +128,10 @@ $breakpoint-large: 'screen and (min-width: 60em)' !default;
     VARIABLES
 
 */
+
+// customized
+$near-black: #181F26 !default;
+$navy: #0B1D2F !default;
+$near-white: #F9F7F7 !default;
+$black: #121416 !default;
+$box-shadow-3: -1px 0px 20px rgba(0, 0, 0, 0.1) !default;
