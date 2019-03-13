@@ -1,24 +1,27 @@
 {% extends "layout.html" %}
 {% import "macros.html" as m %}
 
+{% block spacer %}<div></div>{% endblock %}
+
 {% block content %}
-<section class="vh-75-l vh-100 flex justify-center bg-near-white black absolute w-100 flex-column" style="z-index: 1000000;">
+<section class="vh-75-l vh-100 flex justify-center bg-near-white black absolute w-100 flex-column"
+    style="z-index: 1000000;">
     <div class="center">
         {% if config.extra.logo %}
-            <img src="{{ config.extra.logo }}" class="w5"/>
+        <img src="{{ config.extra.logo }}" class="w5" />
         {% else %}
-            <h1 class="center tc f1">{{ config.title }}</h1>
+        <h1 class="center tc f1">{{ config.title }}</h1>
         {% endif %}
     </div>
     <div class="center nav-links">
         {% if config.extra.nav %}
-            <nav class="w-100 mt4">
-                <div class="flex">
-                    {% for link in config.extra.nav %}
-                        <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
-                    {% endfor %}
-                </div>
-            </nav>
+        <nav class="w-100 mt4">
+            <div class="flex">
+                {% for link in config.extra.nav %}
+                <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
+            </div>
+        </nav>
         {% endif %}
     </div>
 </section>
@@ -32,15 +35,31 @@
 
 {{ m::hash_link(name="latest") }}
 <div class="bg-near-white">
-    <section class="vh-100 ph3 pv5 mw7 center">
+    <section class="ph3 pv5 mw7 center">
         <h1 class="center f2 ttu tracked tl tc-m">Latest</h1>
-        <a href="#" class="no-underline black">
+
+        {# loop through recent posts #}
+        {% set section = get_section(path="articles/_index.md") %}
+        {% for article in section.pages | slice(end=3) %}
+        <a href="{{ article.permalink }}" class="no-underline black mb4 db">
             <article class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
-                <h2>Article Name</h2>
-                <p class="serif">Truncated sample of a potential article</p>
-                {# articles here #}
+                <h2>{{ article.title }}</h2>
+                <p class="serif">
+                    {{ article.content | safe | striptags | truncate }}
+                </p>
             </article>
         </a>
+        {% endfor %}
+
+        {# add a "read more" button if over 3 articles #}
+        {% if section.pages | length > 3 %}
+            <div class="flex justify-end">
+
+                {{ m::button(title="Browse All", href=section.permalink, icon="arrow_forward") }}
+
+            </div>
+        {% endif %}
+
     </section>
 </div>
 

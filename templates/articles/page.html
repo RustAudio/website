@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+{% import "macros.html" as m %}
+
+{% block content %}
+    <article class="ph3 pv5 mw7 center">
+        <h1>{{ page.title }}</h1>
+        <div>
+            {{ page.content | safe }}
+        </div>
+    </article>
+{% endblock content %}

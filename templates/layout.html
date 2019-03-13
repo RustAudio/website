@@ -6,36 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ config.title }}</title>
-    <link rel="stylesheet" href="main.css">
-    <link href="https://fonts.googleapis.com/css?family=Barlow:400,700|PT+Serif:400,400i,700|Inconsolata:400,700"
+    <link rel="stylesheet" href="/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,600,700|PT+Serif:400,400i,700|Inconsolata:400,700"
         rel="stylesheet">
-    {% block extra_head %}{% endblock extra_head %}
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    {% block extra_head %}
+    {% endblock extra_head %}
 </head>
 
 <body class="sans-serif">
     {% if config.extra.nav %}
-        <nav class="bg-white shadow-3 fixed w-100" style="z-index: 10000;">
-            <div class="center mw7 flex items-center justify-between">
-                {% if config.extra.logo %}
-                    <a href="/">
-                        <img src="{{ config.extra.logo }}" style="width: 100px;" class="pl3"/>
-                    </a>
-                {% endif %}
-                <div class="flex">
-                    {% for link in config.extra.nav %}
-                        <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
-                    {% endfor %}
-                </div>
+    <nav class="bg-white shadow-3 fixed w-100" style="z-index: 10000;">
+        <div class="center mw7 flex items-center justify-between">
+            {% if config.extra.logo %}
+            <a href="/">
+                <img src="{{ config.extra.logo }}" style="width: 100px;" class="pl3" />
+            </a>
+            {% endif %}
+
+            <div class="flex">
+                {% for link in config.extra.nav %}
+                <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
             </div>
-            <div class="animated-border"></div>
-        </nav>
+        </div>
+        <div class="animated-border"></div>
+    </nav>
+    {% block spacer %}<div style="height: 82px;"></div>{% endblock %}
     {% endif %}
     {% block content %}{% endblock content %}
     {% block extra_body %}{% endblock extra_body %}
     <footer class="bg-near-white w-100">
         <div class="center mw7 flex items-center">
             <a href="//u9h.design" target="_blank" class="ph3 pv4 dim grow db">
-                <img src="/media/designed.svg" style="width: 100px;" class="db"/>
+                <img src="/media/designed.svg" style="width: 100px;" class="db" />
             </a>
         </div>
     </footer>
