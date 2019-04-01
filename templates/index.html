@@ -28,14 +28,14 @@
 <div class="spacer vh-75-l vh-100"></div>
 
 {{ m::hash_link(name="resources") }}
-<section class="vh-100 ph3 pv5 mw7 center">
+<section class="ph3 pv5 mw7 center">
     <h1 class="center f2 ttu tracked tl tc-m">Resources</h1>
-    {# Here we will put subsections with sliders for each resource #}
+    {# Here we will put all taxonomies in a grid #}
 </section>
 
 {{ m::hash_link(name="latest") }}
-<div class="bg-near-white">
-    <section class="ph3 pv5 mw7 center">
+<section class="bg-near-white">
+    <div class="ph3 pv5 mw7 center">
         <h1 class="center f2 ttu tracked tl tc-m">Latest</h1>
 
         {# loop through recent posts #}
@@ -44,9 +44,9 @@
         <a href="{{ article.permalink }}" class="no-underline black mb4 db">
             <article class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
                 <h2>{{ article.title }}</h2>
-                <p class="serif">
+                <div class="serif lh-copy">
                     {{ article.content | safe | striptags | truncate }}
-                </p>
+                </div>
             </article>
         </a>
         {% endfor %}
@@ -59,14 +59,25 @@
 
             </div>
         {% endif %}
+    </div>
+</section>
 
-    </section>
-</div>
+{{ m::hash_link(name="projects") }}
+<section>
+    <div class="ph3 pv5 mw7 center">
+        <h1 class="center f2 ttu tracked tl tc-m">Projects</h1>
+        {# Here we will put subsections with sliders for each resource #}
+    </div>
+</section>
 
 {{ m::hash_link(name="about") }}
-<div class="bg-near-black white">
+<div class="bg-near-white black">
     <section class="ph3 pv5 mw7 center">
         <h1 class="center f2 ttu tracked tl">About</h1>
+        <div class="serif lh-copy">
+            {% set about = get_page(path="about.md") %}
+            {{ about.content | safe | markdown }}
+        </div>
     </section>
 </div>
 {% endblock content %}

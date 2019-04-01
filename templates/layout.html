@@ -37,9 +37,14 @@
     {% endif %}
     {% block content %}{% endblock content %}
     {% block extra_body %}{% endblock extra_body %}
-    <footer class="bg-near-white w-100">
-        <div class="center mw7 flex items-center">
-            <a href="//u9h.design" target="_blank" class="ph3 pv4 dim grow db">
+    <footer class="bg-near-black w-100">
+        <div class="ph3 pv4 center mw7 flex items-center justify-between align-center">
+            <div class="white">
+                {% for link in config.extra.nav %}
+                <a class="dim pv1 db white f5 no-underline" href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
+            </div>
+            <a href="//u9h.design" target="_blank" class="ph3 pv4 o-20 grow db self-end">
                 <img src="/media/designed.svg" style="width: 100px;" class="db" />
             </a>
         </div>
