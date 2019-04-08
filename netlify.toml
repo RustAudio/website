@@ -2,6 +2,5 @@
 ZOLA_VERSION = "0.6.0"
 publish = "public"
 command = "./build.sh"
-
 [context.deploy-preview]
 command = "./build.sh" 
