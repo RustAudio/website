@@ -1,6 +1,7 @@
 [build]
 ZOLA_VERSION = "0.6.0"
 publish = "public"
-command = "./build.sh"
+command = "chmod +x ./build.sh && ./build.sh"
+
 [context.deploy-preview]
 command = "chmod +x ./build.sh && ./build.sh" 
