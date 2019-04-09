@@ -1,4 +1,4 @@
 +++
-template = "articles/index.html"
 page_template = "articles/page.html"
+template = "articles/index.html"
 +++

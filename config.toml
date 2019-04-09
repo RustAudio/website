@@ -13,6 +13,18 @@ build_search_index = true
 
 title = "rust.audio"
 
+taxonomies = [
+    # CATEGORY IDEAS:
+    # dsp
+    # synthesis
+    # processing
+    # theory
+    # gui
+    # tutorial
+    { name = "categories" },
+    { name = "crates" },
+]
+
 [extra]
 logo = "/media/logo.svg"
 nav = [ { title = "Resources", url = "/#resources" }

@@ -30,7 +30,10 @@
 {{ m::hash_link(name="resources") }}
 <section class="ph3 pv5 mw7 center">
     <h1 class="center f2 ttu tracked tl tc-m">Resources</h1>
-    {# Here we will put all taxonomies in a grid #}
+    {% set categories = get_taxonomy(kind="categories") %}
+    {% for category in categories.items %}
+        <a class="ttu" href="/categories/{{ category.slug }}">{{ category.name }}</a>
+    {% endfor %}
 </section>
 
 {{ m::hash_link(name="latest") }}
