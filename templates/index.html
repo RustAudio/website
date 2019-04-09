@@ -1,9 +1,12 @@
 {% extends "layout.html" %}
 {% import "macros.html" as m %}
 
+{# Who know's what's going on here? I don't. #}
 {% block spacer %}<div></div>{% endblock %}
 
 {% block content %}
+
+{# Large Header #}
 <section class="vh-75-l vh-100 flex justify-center bg-near-white black absolute w-100 flex-column"
     style="z-index: 1000000;">
     <div class="center">
@@ -27,15 +30,25 @@
 </section>
 <div class="spacer vh-75-l vh-100"></div>
 
+{# Resources Blocks #}
 {{ m::hash_link(name="resources") }}
 <section class="ph3 pv5 mw7 center">
     <h1 class="center f2 ttu tracked tl tc-m">Resources</h1>
-    {% set categories = get_taxonomy(kind="categories") %}
-    {% for category in categories.items %}
-        <a class="ttu" href="/categories/{{ category.slug }}">{{ category.name }}</a>
-    {% endfor %}
+
+    <div class="flex">
+        {# List and print all items in the `category` taxonomy #}
+        {% set categories = get_taxonomy(kind="categories") %}
+        {% for category in categories.items %}
+            <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}" href="/categories/{{ category.slug }}">
+                <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
+                    <p>#{{ category.name }}</p>
+                </div>
+            </a>
+        {% endfor %}
+    </div>
 </section>
 
+{# Latest Articles #}
 {{ m::hash_link(name="latest") }}
 <section class="bg-near-white">
     <div class="ph3 pv5 mw7 center">
@@ -57,14 +70,14 @@
         {# add a "read more" button if over 3 articles #}
         {% if section.pages | length > 3 %}
             <div class="flex justify-end">
-
+                {# CTA that links to browsing all pages #}
                 {{ m::button(title="Browse All", href=section.permalink, icon="arrow_forward") }}
-
             </div>
         {% endif %}
     </div>
 </section>
 
+{# Projects #}
 {{ m::hash_link(name="projects") }}
 <section>
     <div class="ph3 pv5 mw7 center">
@@ -73,14 +86,17 @@
     </div>
 </section>
 
+{# About #}
 {{ m::hash_link(name="about") }}
 <div class="bg-near-white black">
     <section class="ph3 pv5 mw7 center">
         <h1 class="center f2 ttu tracked tl">About</h1>
         <div class="serif lh-copy">
+            {# Get about page content from the `about.md` file in content #}
             {% set about = get_page(path="about.md") %}
             {{ about.content | safe | markdown }}
         </div>
     </section>
 </div>
+
 {% endblock content %}

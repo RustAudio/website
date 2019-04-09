@@ -1,17 +1,19 @@
+{# An easy way to keep consistent links that work with the fixed header #}
 {% macro hash_link(name) %}
-<div id="{{name}}" style="position: relative; top: -72px;"></div>
+    <div id="{{name}}" style="position: relative; top: -72px;"></div>
 {% endmacro %}
 
+{# Tachyons can be somewhat verbose, so a Button element isn't a bad choice. #}
 {% macro button(href="#", title="Button", icon=false, color="blue") %}
-<a class="grow bg-{{ color }} white ttu tracked br2 no-underline flex items-center"
-    style="font-weight: 600; padding: 12px 22px; font-size: 16px;" href="{{ href }}">
-    <span class="db">
-        {{ title }}
-    </span>
-    {% if icon %}
-    <i class="ml1 db material-icons">
-        {{ icon }}
-    </i>
-    {% endif %}
-</a>
+    <a class="grow bg-{{ color }} white ttu tracked br2 no-underline flex items-center"
+        style="font-weight: 600; padding: 12px 22px; font-size: 16px;" href="{{ href }}">
+        <span class="db">
+            {{ title }}
+        </span>
+        {% if icon %}
+        <i class="ml1 db material-icons">
+            {{ icon }}
+        </i>
+        {% endif %}
+    </a>
 {% endmacro %}

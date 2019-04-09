@@ -11,11 +11,14 @@
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    {# In case we need some specific script or something #}
     {% block extra_head %}
     {% endblock extra_head %}
 </head>
 
 <body class="sans-serif">
+
+    {# If we defined a navigation, include that in a nav element. #}
     {% if config.extra.nav %}
     <nav class="bg-white shadow-3 fixed w-100" style="z-index: 10000;">
         <div class="center mw7 flex items-center justify-between">
@@ -39,6 +42,7 @@
     {% block extra_body %}{% endblock extra_body %}
     <footer class="bg-near-black w-100">
         <div class="ph3 pv4 center mw7 flex items-center justify-between align-center">
+            {# Show our nav again. You know, for safety measures. #}
             <div class="white">
                 {% for link in config.extra.nav %}
                 <a class="dim pv1 db white f5 no-underline" href="{{ link.url }}">{{ link.title }}</a>
