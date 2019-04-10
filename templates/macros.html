@@ -17,3 +17,17 @@
         {% endif %}
     </a>
 {% endmacro %}
+
+{# Display all articles belonging to a term #}
+{% macro show_taxonomy_pages(term) %}
+    {% for article in term.pages %}
+        <a href="{{ article.permalink }}" class="no-underline black mb4 db">
+            <article class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
+                <h2>{{ article.title }}</h2>
+                <div class="serif lh-copy">
+                    {{ article.content | safe | striptags | truncate }}
+                </div>
+            </article>
+        </a>
+    {% endfor %}
+{% endmacro %}

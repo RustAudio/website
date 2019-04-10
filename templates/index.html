@@ -82,7 +82,18 @@
 <section>
     <div class="ph3 pv5 mw7 center">
         <h1 class="center f2 ttu tracked tl tc-m">Projects</h1>
-        {# Here we will put subsections with sliders for each resource #}
+        
+        <div class="flex">
+            {# List and print all items in the `category` taxonomy #}
+            {% set crates = get_taxonomy(kind="crates") %}
+            {% for crate in crates.items %}
+                <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}" href="/crates/{{ crate.slug }}">
+                    <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
+                        <p>{{ crate.name }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </div>
     </div>
 </section>
 
