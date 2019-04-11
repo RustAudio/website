@@ -48,6 +48,10 @@ We'll be creating a monophonic white-noise generator.  In layman's terms, we're 
 # Setting up
 Let's get started.  Set up a new project the same way you would for any other crate.  Let's call our VST "whisper", because of the whooshing noises.
 
+<div class='filename'>
+  <div>Console</div>
+</div>
+
 ```
 cargo new whisper
 ```
@@ -183,6 +187,10 @@ If you don't have a VST host, go ahead and use the aptly named [VST host](http:/
 
 ## Building and loading our plugin
 Believe it or not, we already have something we can compile and load into a host.  Go ahead and build your project.
+
+<div class='filename'>
+  <div>Console</div>
+</div>
 
 ```
 cargo build

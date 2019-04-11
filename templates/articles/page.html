@@ -2,10 +2,10 @@
 {% import "macros.html" as m %}
 
 {% block content %}
-    <article class="ph3 pv5 mw7 center">
+    <article>
         <h1>{{ page.title }}</h1>
-        <div>
-            {{ page.content | safe }}
-        </div>
+        {{ page.content | safe }}
     </article>
+
+    << discuss on discourse >>
 {% endblock content %}

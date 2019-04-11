@@ -1,2 +1,62 @@
 @import 'tachyons/tachyons.scss';
 @import 'custom/extra.scss';
+
+article {
+    >:not(pre) {
+        @extend #{'.ph4', '.mw7', '.center', '.db', '.near-black'};
+    }
+
+    p,
+    li {
+        @extend #{'.serif'};
+    }
+
+    :not(h1, h2, h3, h4, h5, h6) {
+        @extend #{'.lh-copy'};
+    }
+
+    .filename {
+        >div {
+            background: lighten(#2b303b, 10);
+            @extend #{'.ph4', '.pv3', '.white', '.mt0', '.br--top', '.br--left', '.br2'};
+        }
+
+        @extend #{'.white', '.br2', '.mw7', '.center', '.ma0', '.ph0', '.br--top', '.flex'};
+        background: lighten(#2b303b, 5);
+    }
+
+    pre {
+        @extend #{'.pa4', '.br2', '.mw7', '.center', '.mt0', '.br--bottom'};
+        white-space: pre-wrap;
+    }
+
+    code {
+        @extend #{'.bg-near-white', '.pa1', '.br1', '.ba', '.b--black-05'}
+    }
+
+    >blockquote {
+        @extend #{'.mw7', '.center', '.ph4', '.pv3', '.border-box', '.bg-near-white', '.bl', '.bw2', '.br2', '.f5'};
+        border-color: $blue;
+
+        &:before {
+            @extend #{'.mr2', '.f3'};
+            color: $blue;
+            content: "◈";
+            vertical-align: -0.1em;
+        }
+
+        p {
+            display: inline;
+        }
+    }
+}
+
+p,
+ul,
+li {
+    a {
+        color: $blue;
+        text-decoration: none;
+        font-weight: normal;
+    }
+}
