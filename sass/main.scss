@@ -6,32 +6,38 @@ article {
         @extend #{'.ph4', '.mw7', '.center', '.db', '.near-black'};
     }
 
+    :not(h1, h2, h3, h4, h5, h6) {
+        @extend #{'.lh-copy'};
+    }
+
     p,
     li {
         @extend #{'.serif'};
     }
 
-    :not(h1, h2, h3, h4, h5, h6) {
-        @extend #{'.lh-copy'};
-    }
+
 
     .filename {
         >div {
-            background: lighten(#2b303b, 10);
-            @extend #{'.ph4', '.pv3', '.white', '.mt0', '.br--top', '.br--left', '.br2'};
+            @extend #{'.ph3', '.pv2', '.black', '.mt0', '.br--top', '.br--left', '.br2'};
         }
 
-        @extend #{'.white', '.br2', '.mw7', '.center', '.ma0', '.ph0', '.br--top', '.flex'};
-        background: lighten(#2b303b, 5);
+        @extend #{'.near-black', '.bg-near-white', '.br2', '.mw7', '.center', '.ma0', '.ph0', '.br--top', '.flex', '.ba', '.b--black-10'};
+        position: relative;
+        bottom: -3px;
     }
 
     pre {
-        @extend #{'.pa4', '.br2', '.mw7', '.center', '.mt0', '.br--bottom'};
+        @extend #{'.pa4', '.br2', '.mw7', '.center', '.mt0', '.ba', '.b--black-10'};
         white-space: pre-wrap;
+        font-size: 0.9rem;
     }
 
     code {
-        @extend #{'.bg-near-white', '.pa1', '.br1', '.ba', '.b--black-05'}
+        @extend #{'.bg-near-white', '.pa1', '.br1', '.ba', '.b--black-05'};
+        padding-top: 0.1em;
+        padding-bottom: 0.1em;
+        position: relative;
     }
 
     >blockquote {
