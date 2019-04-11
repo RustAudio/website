@@ -14,7 +14,7 @@
 <script type="text/javascript">
     DiscourseEmbed = {
         discourseUrl: '{{ config.extra.discourse_url | safe }}',
-        discourseEmbedUrl: '{{ config.base_url | safe }}/{{ page.path | safe }}'
+        discourseEmbedUrl: '{{ page.permalink | safe }}'
     };
 
     (function () {
