@@ -58,12 +58,12 @@
         {% set section = get_section(path="articles/_index.md") %}
         {% for article in section.pages | slice(end=3) %}
         <a href="{{ article.permalink }}" class="no-underline black mb4 db">
-            <article class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
+            <div class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
                 <h2>{{ article.title }}</h2>
                 <div class="serif lh-copy">
                     {{ article.content | safe | striptags | truncate }}
                 </div>
-            </article>
+            </div>
         </a>
         {% endfor %}
 
