@@ -31,15 +31,15 @@
 <div class="spacer vh-75-l vh-100"></div>
 
 {# Resources Blocks #}
-{{ m::hash_link(name="resources") }}
+{{ m::hash_link(name="topics") }}
 <section class="ph3 pv5 mw7 center">
-    <h1 class="center f2 ttu tracked tl tc-m">Resources</h1>
+    <h1 class="center f2 ttu tracked tl tc-m">Topics</h1>
 
     <div class="flex">
         {# List and print all items in the `category` taxonomy #}
         {% set categories = get_taxonomy(kind="categories") %}
         {% for category in categories.items %}
-        <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}"
+        <a class="w-50-m w-100 w-third-l no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}"
             href="/categories/{{ category.slug }}">
             <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
                 <p>#{{ category.name }}</p>
@@ -59,8 +59,8 @@
         {% set section = get_section(path="articles/_index.md") %}
         {% for article in section.pages | slice(end=3) %}
         <a href="/{{ article.path }}" class="no-underline black mb4 db">
-            <article class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
-                <h2>{{ article.title }}</h2>
+            <div class="w-100 b--light-gray ba pa4 bg-white br1 grow">
+                <h2 class="mt0 mb2">{{ article.title }}</h2>
                 <div class="serif lh-copy">
                     {{ article.content | safe | striptags | truncate }}
                 </div>

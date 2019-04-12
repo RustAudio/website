@@ -66,3 +66,7 @@ li {
         font-weight: normal;
     }
 }
+
+hr {
+    @extend #{'.ba', '.b--black-05', '.bw1'};
+}

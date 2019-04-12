@@ -15,3 +15,9 @@
         background-position: 100% 0%
     }
 }
+
+#slideout-menu {
+    touch-action: none;
+    display: fixed;
+    bottom: 100000px;
+}

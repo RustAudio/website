@@ -28,7 +28,7 @@ taxonomies = [
 
 [extra]
 logo = "/media/logo.svg"
-nav = [ { title = "Resources", url = "/#resources" }
+nav = [ { title = "Topics", url = "/#topics" }
       , { title = "Latest", url = "/#latest"}
       , { title = "Projects", url = "/#projects"}
       , { title = "About", url = "/#about"}
