@@ -39,11 +39,12 @@
         {# List and print all items in the `category` taxonomy #}
         {% set categories = get_taxonomy(kind="categories") %}
         {% for category in categories.items %}
-            <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}" href="/categories/{{ category.slug }}">
-                <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
-                    <p>#{{ category.name }}</p>
-                </div>
-            </a>
+        <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}"
+            href="/categories/{{ category.slug }}">
+            <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
+                <p>#{{ category.name }}</p>
+            </div>
+        </a>
         {% endfor %}
     </div>
 </section>
@@ -57,8 +58,8 @@
         {# loop through recent posts #}
         {% set section = get_section(path="articles/_index.md") %}
         {% for article in section.pages | slice(end=3) %}
-        <a href="{{ article.permalink }}" class="no-underline black mb4 db">
-            <div class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
+        <a href="/{{ article.path }}" class="no-underline black mb4 db">
+            <article class="w-100 b--light-gray ba pv3 ph4 bg-white br1 grow">
                 <h2>{{ article.title }}</h2>
                 <div class="serif lh-copy">
                     {{ article.content | safe | striptags | truncate }}
@@ -69,10 +70,10 @@
 
         {# add a "read more" button if over 3 articles #}
         {% if section.pages | length > 3 %}
-            <div class="flex justify-end">
-                {# CTA that links to browsing all pages #}
-                {{ m::button(title="Browse All", href=section.permalink, icon="arrow_forward") }}
-            </div>
+        <div class="flex justify-end">
+            {# CTA that links to browsing all pages #}
+            {{ m::button(title="Browse All", href=section.permalink, icon="arrow_forward") }}
+        </div>
         {% endif %}
     </div>
 </section>
@@ -82,16 +83,17 @@
 <section>
     <div class="ph3 pv5 mw7 center">
         <h1 class="center f2 ttu tracked tl tc-m">Projects</h1>
-        
+
         <div class="flex">
             {# List and print all items in the `category` taxonomy #}
             {% set crates = get_taxonomy(kind="crates") %}
             {% for crate in crates.items %}
-                <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}" href="/crates/{{ crate.slug }}">
-                    <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
-                        <p>{{ crate.name }}</p>
-                    </div>
-                </a>
+            <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}"
+                href="/crates/{{ crate.slug }}">
+                <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
+                    <p>{{ crate.name }}</p>
+                </div>
+            </a>
             {% endfor %}
         </div>
     </div>

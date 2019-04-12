@@ -2,10 +2,27 @@
 {% import "macros.html" as m %}
 
 {% block content %}
-    <article>
-        <h1>{{ page.title }}</h1>
-        {{ page.content | safe }}
-    </article>
+<article>
+    <h1>{{ page.title }}</h1>
+    {{ page.content | safe }}
+</article>
 
-    << discuss on discourse >>
+{% if config.extra.discourse_url %}
+<div class="mw7 center pa4">
+    <div id='discourse-comments'></div>
+</div>
+<script type="text/javascript">
+    DiscourseEmbed = {
+        discourseUrl: '{{ config.extra.discourse_url | safe }}',
+        discourseEmbedUrl: '{{ page.permalink | safe }}'
+    };
+
+    (function () {
+        var d = document.createElement('script'); d.type = 'text/javascript'; d.async = true;
+        d.src = DiscourseEmbed.discourseUrl + 'javascripts/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(d);
+    })();
+</script>
+{% endif %}
+
 {% endblock content %}
