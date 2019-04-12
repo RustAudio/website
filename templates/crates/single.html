@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% import "macros.html" as m %}
+
+{% block content %}
+    <div class="center mw7">
+        {% set info = load_data(url="https://crates.io/api/v1/crates/" ~ term.name, format="json") %}
+        <h1 class="w-100">{{ term.name }}</h1>
+        <div>
+            {% if info.crate.description %}
+                <p>{{info.crate.description}}</p>
+            {% endif %}
+        </div>
+
+        <section>
+            {{ m::show_taxonomy_pages(term=term) }}
+        </section>
+    </div>
+{% endblock content %}

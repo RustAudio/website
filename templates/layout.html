@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{ config.title }}</title>
+    <link rel="stylesheet" href="/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,600,700|PT+Serif:400,400i,700|Inconsolata:400,700"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="/js/main.js"></script>
+    {# In case we need some specific script or something #}
+    {% block extra_head %}
+    {% endblock extra_head %}
+</head>
+
+<body class="sans-serif">
+
+    {# If we defined a navigation, include that in a nav element. #}
+    {% if config.extra.nav %}
+    <nav class="bg-white shadow-3 fixed w-100 db-l db-m dn" style="z-index: 10000;">
+        <div class="center mw7 flex items-center justify-between">
+            {% if config.extra.logo %}
+            <a href="/">
+                <img src="{{ config.extra.logo }}" style="width: 100px;" class="pl3" />
+            </a>
+            {% endif %}
+
+            <div class="flex">
+                {% for link in config.extra.nav %}
+                <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="animated-border"></div>
+    </nav>
+
+    {% block spacer %}<div style="height: 82px;" class="dn db-m db-l"></div>{% endblock %}
+
+    {# mobile header #}
+    <div id="slideout-menu-bounds" class="fixed w-100"></div>
+    <nav id="slideout-menu" class="bg-white shadow-3 dn-l dn-m db fixed w-100" style="z-index: 10000;">
+        <div>
+            {# Menu indicator #}
+            <div id="slideout-menu-header" class="flex center mw7 items-center justify-between">
+                {% if config.extra.logo %}
+                    <a href="/" class="pl3">
+                        <img src="{{ config.extra.logo }}" style="width: 100px;" class="pl3" />
+                    </a>
+                {% endif %}
+
+                {# Mobile navigation slide up #}
+                <a class="dim ph4 pv4 db f5 black no-underline ttu tracked" href="#"><strong>Menu</strong></a>
+            </div>
+
+            <hr>
+    
+            <div id="slideout-menu-content" class="flex flex-column">
+                {% for link in config.extra.nav %}
+                    <a class="dim pa4 db f5 black no-underline ttu tracked" href="{{ link.url }}">
+                        {{ link.title }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </nav>
+
+    <div class="dn-l dn-m animated-border fixed" style="z-index: 10000; bottom: 0; left: 0; right: 0;"></div>
+
+    {% endif %}
+    {% block content %}{% endblock content %}
+    {% block extra_body %}{% endblock extra_body %}
+    <footer class="bg-near-black w-100">
+        <div class="ph3 pv4 center mw7 flex items-center justify-between align-center">
+            {# Show our nav again. You know, for safety measures. #}
+            <div class="white">
+                {% for link in config.extra.nav %}
+                <a class="dim pv1 db white f5 no-underline" href="{{ link.url }}">{{ link.title }}</a>
+                {% endfor %}
+            </div>
+            <a href="https://www.netlify.com" class="o-50 grow" target="_blank">
+                <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg" />
+            </a>
+            <a href="//u9h.design" target="_blank" class="ph3 pv4 o-20 grow db self-end">
+                <img src="/media/designed.svg" style="width: 100px;" class="db" />
+            </a>
+
+        </div>
+    </footer>
+</body>
+
+</html>
