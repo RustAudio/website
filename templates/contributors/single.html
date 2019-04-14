@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% import "macros.html" as m %}
+
+{% block content %}
+    <div class="center mw7">
+        {# get associated contributors page #}
+        {% set contributor = get_page(path="contributors/" ~ term.name ~ ".md") %}
+        <h1 class="w-100">{{ contributor.title }}</h1>
+        {{ contributor.content | safe }}
+
+        {% if contributor.extra.github %}
+            <a href="https://github.com/{{contributor.extra.github}}" target="blank">GitHub</a>
+        {% endif %}
+
+        {# display pages #}
+        <section>
+            {{ m::show_taxonomy_pages(term=term) }}
+        </section>
+    </div>
+{% endblock content %}

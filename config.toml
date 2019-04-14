@@ -22,16 +22,15 @@ taxonomies = [
     # theory
     # gui
     # tutorial
-    { name = "categories" },
+    { name = "topics" },
     { name = "crates" },
-    { name = "authors" },
+    { name = "contributors" },
 ]
 
 [extra]
 logo = "/media/logo.svg"
-nav = [ { title = "Topics", url = "/#topics" }
-      , { title = "Latest", url = "/#latest"}
-      , { title = "Crates", url = "/#crates"}
+nav = [ { title = "Topics", url = "/topics" }
+      , { title = "Crates", url = "/crates"}
       , { title = "About", url = "/#about"}
       ]
 discourse_url = "https://rust-audio.discourse.group/"

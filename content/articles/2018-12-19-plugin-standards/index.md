@@ -4,8 +4,8 @@ date = 2019-04-12
 tags = ["rust", "audio", "vst"]
 
 [taxonomies]
-categories = ["plugins"]
-authors = ["robsaunders"]
+topics = ["plugins"]
+contributors = ["robsaunders"]
 +++
 
 Many plugin standards exist, and separate versions of each interface can be very different.  As these standards further fragment, creating a plugin can become more and more confusing.

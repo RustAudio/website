@@ -4,9 +4,9 @@ date = 2018-01-03
 tags = ["rust", "audio", "vst"]
 
 [taxonomies]
-categories = ["synthesizers", "tutorials"]
+topics = ["synthesizers", "tutorials"]
 crates = ["vst"]
-authors = ["doomy"]
+contributors = ["doomy"]
 +++
 
 > This article was sourced from [vaporsoft.net](https://vaporsoft.net/creating-an-audio-plugin-with-rust-vst/)
