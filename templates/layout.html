@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css?family=Barlow:400,600,700|PT+Serif:400,400i,700|Inconsolata:400,700"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="/js/main.js"></script>
+    <script src="/js/main.js" async defer></script>
     {# In case we need some specific script or something #}
     {% block extra_head %}
     {% endblock extra_head %}
@@ -40,8 +40,7 @@
     {% block spacer %}<div style="height: 82px;" class="dn db-m db-l"></div>{% endblock %}
 
     {# mobile header #}
-    <div id="slideout-menu-bounds" class="fixed w-100"></div>
-    <nav id="slideout-menu" class="bg-white shadow-3 dn-l dn-m db fixed w-100" style="z-index: 10000;">
+    <nav id="slideout-menu" data-open="false" class="bg-white shadow-3 dn-l dn-m db fixed w-100" style="z-index: 10000;">
         <div>
             {# Menu indicator #}
             <div id="slideout-menu-header" class="flex center mw7 items-center justify-between">
@@ -57,9 +56,9 @@
 
             <hr>
     
-            <div id="slideout-menu-content" class="flex flex-column">
+            <div class="flex flex-column">
                 {% for link in config.extra.nav %}
-                    <a class="dim pa4 db f5 black no-underline ttu tracked" href="{{ link.url }}">
+                    <a class="dim pa4 db f4 black no-underline" href="{{ link.url }}">
                         {{ link.title }}
                     </a>
                 {% endfor %}
@@ -77,7 +76,7 @@
             {# Show our nav again. You know, for safety measures. #}
             <div class="white">
                 {% for link in config.extra.nav %}
-                <a class="dim pv1 db white f5 no-underline" href="{{ link.url }}">{{ link.title }}</a>
+                    <a class="dim pv1 db white f5 no-underline" href="{{ link.url }}">{{ link.title }}</a>
                 {% endfor %}
             </div>
             <a href="https://www.netlify.com" class="o-50 grow" target="_blank">

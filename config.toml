@@ -24,13 +24,14 @@ taxonomies = [
     # tutorial
     { name = "categories" },
     { name = "crates" },
+    { name = "authors" },
 ]
 
 [extra]
 logo = "/media/logo.svg"
 nav = [ { title = "Topics", url = "/#topics" }
       , { title = "Latest", url = "/#latest"}
-      , { title = "Projects", url = "/#projects"}
+      , { title = "Crates", url = "/#crates"}
       , { title = "About", url = "/#about"}
       ]
 discourse_url = "https://rust-audio.discourse.group/"

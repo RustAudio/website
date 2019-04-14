@@ -33,7 +33,7 @@
 {# Resources Blocks #}
 {{ m::hash_link(name="topics") }}
 <section class="ph3 pv5 mw7 center">
-    <h1 class="center f2 ttu tracked tl tc-m">Topics</h1>
+    <h1 class="center f2 tl tc-m">Topics</h1>
 
     <div class="flex">
         {# List and print all items in the `category` taxonomy #}
@@ -41,8 +41,8 @@
         {% for category in categories.items %}
         <a class="w-50-m w-100 w-third-l no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}"
             href="/categories/{{ category.slug }}">
-            <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
-                <p>#{{ category.name }}</p>
+            <div class="bg-white b--light-gray ba f3 shadow-3 black pa4 tc grow">
+                <p>{{ category.name }}</p>
             </div>
         </a>
         {% endfor %}
@@ -53,7 +53,7 @@
 {{ m::hash_link(name="latest") }}
 <section class="bg-near-white">
     <div class="ph3 pv5 mw7 center">
-        <h1 class="center f2 ttu tracked tl tc-m">Latest</h1>
+        <h1 class="center f2 tl tc-m">Latest</h1>
 
         {# loop through recent posts #}
         {% set section = get_section(path="articles/_index.md") %}
@@ -79,10 +79,10 @@
 </section>
 
 {# Projects #}
-{{ m::hash_link(name="projects") }}
+{{ m::hash_link(name="crates") }}
 <section>
     <div class="ph3 pv5 mw7 center">
-        <h1 class="center f2 ttu tracked tl tc-m">Projects</h1>
+        <h1 class="center f2 tl tc-m">Crates</h1>
 
         <div class="flex">
             {# List and print all items in the `category` taxonomy #}
@@ -90,8 +90,8 @@
             {% for crate in crates.items %}
             <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}"
                 href="/crates/{{ crate.slug }}">
-                <div class="bg-white b--light-gray ba f3 ttu shadow-3 black pa4 tc grow">
-                    <p>{{ crate.name }}</p>
+                <div class="bg-white b--light-gray ba f3 v-top shadow-3 black pa4 tc grow">
+                    <p class="v-top">{{ crate.name }}</p>
                 </div>
             </a>
             {% endfor %}
@@ -103,7 +103,7 @@
 {{ m::hash_link(name="about") }}
 <div class="bg-near-white black">
     <section class="ph3 pv5 mw7 center">
-        <h1 class="center f2 ttu tracked tl">About</h1>
+        <h1 class="center f2 tl">About</h1>
         <div class="serif lh-copy">
             {# Get about page content from the `about.md` file in content #}
             {% set about = get_page(path="about.md") %}

@@ -1,12 +1,12 @@
 +++
 title = "Creating a simple synthesizer VST plugin in Rust"
 date = 2018-01-03
-category = "tutorial"
 tags = ["rust", "audio", "vst"]
 
 [taxonomies]
-categories = ["synthesizers"]
+categories = ["synthesizers", "tutorials"]
 crates = ["vst"]
+authors = ["doomy"]
 +++
 
 > This article was sourced from [vaporsoft.net](https://vaporsoft.net/creating-an-audio-plugin-with-rust-vst/)
@@ -15,11 +15,6 @@ Welcome to 2018!  A lot happened this past year - the most important of which be
 
 # Preface
 If you know what you're looking for (e.g., if you came here from a Google search) and you're antsy to get into code, just go ahead and skip to the bits where we start coding.  Or read the notes that I slaved away at writing.  Up to you. 
-
-## Video
-A video of this content has been provided.  If that's not your thing, you can always follow along with the text below instead.
-
-{{ youtube(bwu=true, id="zuOQDZMqq4") }}
 
 ## About
 `vst` is a crate that implements the VST 2.4 specification by Steinberg.  VSTs (Virtual Studio Technology) are audio plugins used in a variety of applications.  Its basic features are as follows:

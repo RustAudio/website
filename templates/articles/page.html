@@ -8,10 +8,10 @@
 </article>
 
 {% if config.extra.discourse_url %}
-<div class="mw7 center pa4">
+<div class="mw7 center pv4 ph4-ns ph2">
     <div id='discourse-comments'></div>
 </div>
-<script type="text/javascript">
+<script type="text/javascript" async defer>
     DiscourseEmbed = {
         discourseUrl: '{{ config.extra.discourse_url | safe }}',
         discourseEmbedUrl: '{{ page.permalink | safe }}'
