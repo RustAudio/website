@@ -7,7 +7,7 @@
 {% block content %}
 
 {# Large Header #}
-<section class="vh-75-l vh-100 flex justify-center bg-near-white black absolute w-100 flex-column"
+<section class="vh-75-ns vh-50 flex justify-center bg-near-white black absolute w-100 flex-column"
     style="z-index: 1000000;">
     <div class="center">
         {% if config.extra.logo %}
@@ -28,25 +28,13 @@
         {% endif %}
     </div>
 </section>
-<div class="spacer vh-75-l vh-100"></div>
+<div class="spacer vh-75-ns vh-50"></div>
 
-{# Resources Blocks #}
+{# Topics Blocks #}
 {{ m::hash_link(name="topics") }}
-<section class="ph3 pv5 mw7 center">
+<section class="ph2 pv5 mw7 center">
     <h1 class="center f2 tl tc-m">Topics</h1>
-
-    <div class="flex">
-        {# List and print all items in the `category` taxonomy #}
-        {% set categories = get_taxonomy(kind="categories") %}
-        {% for category in categories.items %}
-        <a class="w-50-m w-100 w-third-l no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}"
-            href="/categories/{{ category.slug }}">
-            <div class="bg-white b--light-gray ba f3 shadow-3 black pa4 tc grow">
-                <p>{{ category.name }}</p>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
+    {{ m::show_taxonomy_terms(taxonomy='categories') }}
 </section>
 
 {# Latest Articles #}
@@ -81,21 +69,9 @@
 {# Projects #}
 {{ m::hash_link(name="crates") }}
 <section>
-    <div class="ph3 pv5 mw7 center">
+    <div class="ph2 pv5 mw7 center">
         <h1 class="center f2 tl tc-m">Crates</h1>
-
-        <div class="flex">
-            {# List and print all items in the `category` taxonomy #}
-            {% set crates = get_taxonomy(kind="crates") %}
-            {% for crate in crates.items %}
-            <a class="w-third no-underline {% if not loop.first and not loop.last and not loop.index % 3 == 0 %}ph3{% endif %}"
-                href="/crates/{{ crate.slug }}">
-                <div class="bg-white b--light-gray ba f3 v-top shadow-3 black pa4 tc grow">
-                    <p class="v-top">{{ crate.name }}</p>
-                </div>
-            </a>
-            {% endfor %}
-        </div>
+        {{ m::show_taxonomy_terms(taxonomy='crates') }}
     </div>
 </section>
 

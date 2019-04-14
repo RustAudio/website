@@ -30,7 +30,6 @@ function init() {
             menu.style.bottom = '0px';
             menu_text.innerHTML = 'Close Menu'
         }
-        e.preventDefault();
     });
 }
 

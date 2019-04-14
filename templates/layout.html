@@ -43,7 +43,7 @@
     <nav id="slideout-menu" data-open="false" class="bg-white shadow-3 dn-l dn-m db fixed w-100" style="z-index: 10000;">
         <div>
             {# Menu indicator #}
-            <div id="slideout-menu-header" class="flex center mw7 items-center justify-between">
+            <div id="slideout-menu-header" style="z-index: 1000000;" class="flex center mw7 items-center justify-between">
                 {% if config.extra.logo %}
                     <a href="/" class="pl3">
                         <img src="{{ config.extra.logo }}" style="width: 100px;" class="pl3" />
@@ -51,7 +51,7 @@
                 {% endif %}
 
                 {# Mobile navigation slide up #}
-                <a class="dim ph4 pv4 db f5 black no-underline ttu tracked" href="#"><strong>Menu</strong></a>
+                <strong class="dim ph4 pv4 db f5 black no-underline ttu tracked">Open Menu</strong>
             </div>
 
             <hr>
@@ -85,8 +85,8 @@
             <a href="//u9h.design" target="_blank" class="ph3 pv4 o-20 grow db self-end">
                 <img src="/media/designed.svg" style="width: 100px;" class="db" />
             </a>
-
         </div>
+        <div style="height: 82px;" class="dn-ns db"></div>
     </footer>
 </body>
 

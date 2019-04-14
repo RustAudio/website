@@ -31,3 +31,18 @@
         </a>
     {% endfor %}
 {% endmacro %}
+
+{% macro show_taxonomy_terms(taxonomy) %}
+    <div class="flex flex-row-ns flex-column flex-wrap items-center">
+        {# List and print all items in the `category` taxonomy #}
+        {% set taxonomy_obj = get_taxonomy(kind=taxonomy) %}
+        {% for term in taxonomy_obj.items %}
+        <a class="db w-50-m w-100 w-third-l no-underline pb3 ph2"
+            href="/{{taxonomy}}/{{ term.slug }}">
+            <div class="bg-white b--light-gray ba f3-ns f4 shadow-3 black pa4-ns pa2 tc grow">
+                <p>{{ term.name }}</p>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+{% endmacro %}
