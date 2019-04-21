@@ -3,6 +3,7 @@ base_url = "https://rust.audio"
 
 # Whether to automatically compile all Sass files in the sass directory
 compile_sass = true
+generate_rss = true
 
 # Whether to do syntax highlighting
 # Theme can be customised by setting the `highlight_theme` variable to a theme supported by Gutenberg
