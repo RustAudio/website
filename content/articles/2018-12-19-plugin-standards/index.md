@@ -1,7 +1,6 @@
 +++
 title = "Plugin Standards Explained"
 date = 2019-04-12
-tags = ["rust", "audio", "vst"]
 
 [taxonomies]
 topics = ["plugins"]
