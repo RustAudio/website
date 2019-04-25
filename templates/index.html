@@ -89,3 +89,23 @@
 </div>
 
 {% endblock content %}
+
+{% block footer %}
+<footer class="bg-near-black w-100">
+    <div class="ph3 pv4 center mw7 flex items-center justify-between align-center">
+        {# Show our nav again. You know, for safety measures. #}
+        <div class="white">
+            {% for link in config.extra.nav %}
+            <a class="dim pv1 db white f5 no-underline" href="{{ link.url }}">{{ link.title }}</a>
+            {% endfor %}
+        </div>
+        <a href="https://www.netlify.com" class="o-50 grow" target="_blank">
+            <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg" />
+        </a>
+        <a href="//u9h.design" target="_blank" class="ph3 pv4 o-20 grow db self-end">
+            <img src="/media/designed.svg" style="width: 100px;" class="db" />
+        </a>
+    </div>
+    <div style="height: 82px;" class="dn-ns db"></div>
+</footer>
+{% endblock footer %}
