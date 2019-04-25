@@ -3,11 +3,26 @@
 
 {% block content %}
     <div class="center mw7">
-        {% set info = load_data(url="https://crates.io/api/v1/crates/" ~ term.name, format="json") %}
+        {#% set info = load_data(url="https://crates.io/api/v1/crates/" ~ term.name, format="json") %#}
+        {% set info = load_data(url="https://crates.io/api/v1/crates/winapi", format="json") %}
         <h1 class="w-100">{{ term.name }}</h1>
+        {# assign a shorter variable to info.crate for sanity #}
+        {% set c = info.crate %}
         <div>
-            {% if info.crate.description %}
-                <p>{{info.crate.description}}</p>
+            {% if c.description %}
+                <p>{{c.description}}</p>
+            {% endif %}
+
+            {% if c.updated_at %}
+                <p>Updated at {{c.updated_at | date(format="%Y-%m-%d %H:%M%Z")}}</p>
+            {% endif %}
+
+            {% if c.documentation %}
+                <p>
+                    <a target="_blank" href="{{c.documentation}}">
+                        Documentation
+                    </a>
+                </p>
             {% endif %}
         </div>
 
