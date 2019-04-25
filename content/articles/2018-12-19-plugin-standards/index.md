@@ -26,11 +26,11 @@ Currently, no Rust libraries implement the AudioUnit standard. However, there ar
 - [DPlug - AudioUnit implemented in DLang](https://github.com/AuburnSounds/Dplug/tree/master/au/dplug/au)
 
 ## LV2 (Free / Open Source)
-While promising, LV2 is only supported on Linux except for a few other open source DAWs.
+While having a promising design, LV2 is only supported by very few, open source or Linux oriented DAWs.
 
-All plugin hosts and plugin implementations are backwards compatible with previous versions.  In other words, plugins implemented with a new version can also use an old version.  Additionally, plugins implemented with a new version can also load in older DAWs. While the older plugin standard lacks some nice features <sup>[[which features?]](https://github.com/rust-dsp/rust-vst/wiki/Plugin-Standards/_edit)</sup>, many still use it.
+It's most unique feature is to store general information about the plugin in configuration files instead of the binary, which makes the standard very extensible.
 
-There are a few LV2 implementations in Rust, with confusingly similar names:
+Currently, there is no production-ready crate for plugin creation, but there are several prototypes:
 
 - [`lv2`](https://crates.io/crates/lv2)
 - [`lv2rs`](https://crates.io/crates/lv2rs)
@@ -38,6 +38,7 @@ There are a few LV2 implementations in Rust, with confusingly similar names:
 
 Further reading:
 - [LV2 Crate implementation and Design on rust.audio](http://rust-audio.discourse.group/t/lv2-crate-implementation-and-design/71/2)
+- [Giving an Overview about LV2](http://rust-audio.discourse.group/t/giving-an-overview-about-lv2/70/11)
 
 ## Conclusion
 Permissive licensing is always good news for our projects. We believe standards should be free, open, and free from corporate interests.  The culture of proprietary audio software holds back the audio industry as a whole! 
