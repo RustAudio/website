@@ -3,7 +3,7 @@ title = "Useful Links for DSP and Audio Programming"
 date = 2018-01-03
 
 [taxonomies]
-topics = ["dsp", "tutorials"]
+topics = ["DSP", "Tutorials"]
 contributors = ["crsaracco", "engid", "doomy"]
 +++
 

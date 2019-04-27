@@ -3,7 +3,7 @@ title = "Creating a simple synthesizer VST plugin in Rust"
 date = 2018-01-03
 
 [taxonomies]
-topics = ["synthesizers", "tutorials"]
+topics = ["Synthesizers", "Tutorials"]
 crates = ["vst"]
 contributors = ["doomy"]
 +++

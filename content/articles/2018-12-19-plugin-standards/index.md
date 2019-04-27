@@ -3,7 +3,7 @@ title = "Plugin Standards Explained"
 date = 2019-04-12
 
 [taxonomies]
-topics = ["plugins"]
+topics = ["Plugins"]
 contributors = ["robsaunders", "doomy"]
 +++
 
