@@ -462,6 +462,8 @@ impl Plugin for Whisper {
 plugin_main!(Whisper); 
 ```
 
+> Note: Some VST Hosts implement software MIDI keyboards slightly differently!  Rather than sending a 128 "note-off" when a key is released, they send a 144 "note-on" with the velocity (ev.data[2]) set to 0.
+
 Build and compile our code, and your plugin should work wonderfully.  It'll only create the horrible harsh white-noise when a key is being held.  We can also mash down a bunch of keys at once without stopping generating sound.  
 
 Please again note that this is a *very* rudimentary system, and it's very specific to our use case.
