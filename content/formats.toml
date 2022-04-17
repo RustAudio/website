@@ -1,0 +1,48 @@
+# Audio plugin formats
+
+[[formats]]
+# Human readable format name
+name = "VST"
+# Short synopsis of the format
+description = "VST2 was one of the most common standards, but is now unlicensed. Instead, VST3 is recommended. VSTs are generally supported in most DAWs."
+# Whether or not the format is permissively licensed
+proprietary = true
+# Optional crates that work with this format
+crates = [
+    { name = "vst", url = "https://github.com/RustAudio/vst-rs" },
+    { name = "vst3-sys", url = "https://github.com/RustAudio/vst3-sys" },
+]
+# Optional additional resources on this format
+resources = []
+
+[[formats]]
+name = "AudioUnit"
+description = "AudioUnit (AU) is only available on Apple platforms. AU v2 is simlar to VST, and AU v3 follows an Apple framework approach, which is harder to implement without Apple tools. Currently, no Rust libraries implement the AudioUnit standard."
+proprietary = true
+resources = [ 
+    { name = "Rust CoreAudio - AudioUnit struct documentation", url = "http://rustaudio.github.io/coreaudio-rs/coreaudio/audio_unit/struct.AudioUnit.html" },
+    { name = "Rust CoreAudio - Possibility of creating AU plugins", url = "https://github.com/RustAudio/coreaudio-rs/issues/52" },
+    { name = "Rust CoreAudio - AudioUnit implementation", url = "https://github.com/RustAudio/coreaudio-rs/blob/master/src/audio_unit/mod.rs" },
+    { name = "DPlug - AudioUnit implemented in DLang", url = "https://github.com/AuburnSounds/Dplug/tree/master/au/dplug/au" },
+]
+
+[[formats]]
+name = "LV2"
+description = "LV2 is only supported on Linux with a few exceptions. One interesting feature is that all LV2 plugin hosts and plugins are backwards compatible with previous versions."
+proprietary = false
+crates = [
+    { name = "rust-lv2", url = "https://github.com/RustAudio/rust-lv2" },
+    { name = "lv2rs", url = "https://github.com/Janonard/lv2rs" },
+]
+resources = [
+    { name = "LV2 Crate implementation and Design on rust.audio", url = "https://rust-audio.discourse.group/t/lv2-crate-implementation-and-design/71/2" },
+]
+
+[[formats]]
+name = "CLAP"
+description = "CLAP is a relatively new plugin format with permissive licensing. It does not currently have wide support outside of Bitwig."
+proprietary = false
+crates = [
+    { name = "clap-lv2", url = "https://github.com/glowcoil/clap-sys" },
+]
+

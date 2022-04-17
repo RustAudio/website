@@ -85,11 +85,13 @@ a.button {
     }
 }
 
-footer {
-    display: flex;
-    justify-content: space-between;
-    padding: 3rem;
-    background: rgba(0, 0, 0, 0.02);
+hr {
+    border: 1px solid $border-light;
+    margin: 3em 0;
+}
+
+h1,h2,h3,h4,h5,h6,pre {
+    margin: 0.2em 0;
 }
 
 h1 { font-size: 3rem; }
@@ -141,18 +143,49 @@ section {
 .crates {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
+    @media screen and (max-width: 960px) {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+    @media screen and (max-width: 720px) {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media screen and (max-width: 500px) {
+        grid-template-columns: 1fr;
+    }
     h4 {
         margin: 0;
     }
     .crate {
         border-bottom: 1px $border-light solid;  
         border-right: 1px $border-light solid;  
-        &:nth-child(4n), &:last-child {
-            border-right: none;
-        } 
-        &:nth-child(-n+4) {
+        @media screen and ( min-width: 960px) {
+            &:nth-child(4n), &:last-child {
+                border-right: none;
+            } 
+            &:nth-child(-n+4) {
+                border-top: 1px $border-light solid;
+            }
+        }
+        @media screen and (max-width: 960px) and (min-width: 720px) {
+            &:nth-child(3n), &:last-child {
+                border-right: none;
+            } 
+            &:nth-child(-n+3) {
+                border-top: 1px $border-light solid;
+            }
+        }
+        @media screen and (max-width: 720px) and (min-width: 500px) {
+            &:nth-child(2n), &:last-child {
+                border-right: none;
+            } 
+            &:nth-child(-n+2) {
+                border-top: 1px $border-light solid;
+            }
+        }
+        @media screen and (max-width: 500px) {
+            border: none;
             border-top: 1px $border-light solid;
-        } 
+        }
         display: flex;
         justify-content: space-between;
         padding: 1em;

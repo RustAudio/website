@@ -6,7 +6,7 @@
 {# Header #}
 <nav>
     <a href="/">{% if config.extra.logo %}
-        <img src="{{ config.extra.logo }}" />
+        <img src={{config.extra.logo}} />
         {% endif %}
         <h3>{{ config.title }}</h3>
     </a>
@@ -40,19 +40,70 @@
     </div>
 </section>
 
+<hr>
+
 {# Resources #}
 <section class="container">
+    <h1>Resources</h1>
+
+    <article>
+        <h1>Audio plugin formats</h1>
+        {% set formats = load_data(path="content/formats.toml") %}
+        {% for format in formats.formats %}
+        <h2>
+            <pre>{{format.name}}</pre>
+        </h2>
+
+        <small>{% if format.proprietary %}Proprietary{% else %}Free & Open Source
+            {% endif %}</small>
+
+        <p>{{format.description}}</p>
+
+        {% if format.resources %}
+        <h3>Resources</h3>
+        <ul>
+            {% for resource in format.resources %}
+            <a href={{resource.url}}>
+                <li>{{resource.name}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        {% if format.crates %}
+        <h3>Crates</h3>
+        <ul>
+            {% for crate in format.crates %}
+            <a href={{crate.url}}>
+                <li>{{crate.name}}</li>
+            </a>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+
+        {% endfor %}
+    </article>
+    <hr>
     <article>
         <h1>DSP resources</h1>
         {% set resources = load_data(path="content/resources.toml") %}
         {% for group, resources in resources.resources | group_by(attribute="category") %}
         <h2>{{group | capitalize}}</h2>
-        {% for resource in resources %}
-        <a href={{resource.url}}>{{ resource.name }}</a></br>
-        {% endfor %}
+        <ul>
+            {% for resource in resources %}
+            <a href={{resource.url}}>
+                <li>{{resource.name}}</li>
+            </a>
+            {% endfor %}
+        </ul>
         {% endfor %}
     </article>
 </section>
+
+<hr>
+
+{# Crates #}
 
 <section>
     <h2 class="container-full">RustAudio Crates</h2>
