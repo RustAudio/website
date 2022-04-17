@@ -17,32 +17,3 @@
         {% endif %}
     </a>
 {% endmacro %}
-
-{# Display all articles belonging to a term #}
-{% macro show_taxonomy_pages(term) %}
-    {% for article in term.pages %}
-        <a href="/{{ article.path }}" class="no-underline black mb4 db">
-            <article class="w-100 b--light-gray ba pa3 bg-white br1 grow">
-                <h2 class="ma0 pa0 mb2">{{ article.title }}</h2>
-                <div class="serif lh-copy pa0">
-                    {{ article.content | safe | striptags | truncate }}
-                </div>
-            </article>
-        </a>
-    {% endfor %}
-{% endmacro %}
-
-{% macro show_taxonomy_terms(taxonomy) %}
-    <div class="flex flex-row-ns flex-column flex-wrap items-center">
-        {# List and print all items in the `category` taxonomy #}
-        {% set taxonomy_obj = get_taxonomy(kind=taxonomy) %}
-        {% for term in taxonomy_obj.items %}
-        <a class="db w-50-m w-100 w-third-l no-underline pb3 ph2"
-            href="/{{taxonomy}}/{{ term.slug }}">
-            <div class="bg-white b--light-gray ba f3-ns f4 shadow-3 black pa4-ns pa2 tc grow">
-                <p>{{ term.name }}</p>
-            </div>
-        </a>
-        {% endfor %}
-    </div>
-{% endmacro %}

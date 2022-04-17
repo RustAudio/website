@@ -1,111 +1,76 @@
 {% extends "layout.html" %}
 {% import "macros.html" as m %}
 
-{# Who know's what's going on here? I don't. #}
-{% block spacer %}<div></div>{% endblock %}
-
 {% block content %}
 
-{# Large Header #}
-<section class="vh-75-ns vh-50 flex justify-center bg-near-white black absolute w-100 flex-column"
-    style="z-index: 1000000;">
-    <div class="center">
-        {% if config.extra.logo %}
-        <img src="{{ config.extra.logo }}" class="w5" />
-        {% else %}
-        <h1 class="center tc f1">{{ config.title }}</h1>
+{# Header #}
+<nav>
+    <a href="/">{% if config.extra.logo %}
+        <img src="{{ config.extra.logo }}" />
         {% endif %}
-    </div>
-    <div class="center nav-links">
-        {% if config.extra.nav %}
-        <nav class="w-100 mt4">
-            <div class="flex">
-                {% for link in config.extra.nav %}
-                <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
-                {% endfor %}
-            </div>
-        </nav>
-        {% endif %}
-    </div>
-</section>
-<div class="spacer vh-75-ns vh-50"></div>
-
-{# Topics Blocks #}
-{{ m::hash_link(name="topics") }}
-<section class="ph2 pv5 mw7 center">
-    <h1 class="center f2 tl tc-m">Topics</h1>
-    {{ m::show_taxonomy_terms(taxonomy='topics') }}
-</section>
-
-{# Latest Articles #}
-{{ m::hash_link(name="latest") }}
-<section class="bg-near-white">
-    <div class="ph3 pv5 mw7 center">
-        <h1 class="center f2 tl tc-m">Latest</h1>
-
-        {# loop through recent posts #}
-        {% set section = get_section(path="articles/_index.md") %}
-        {% for article in section.pages | slice(end=3) %}
-        <a href="/{{ article.path }}" class="no-underline black mb4 db">
-            <div class="w-100 b--light-gray ba pa4 bg-white br1 grow">
-                <h2 class="mt0 mb2">{{ article.title }}</h2>
-                <div class="serif lh-copy">
-                    {{ article.content | safe | striptags | truncate }}
-                </div>
-            </div>
-        </a>
-        {% endfor %}
-
-        {# add a "read more" button if over 3 articles #}
-        {% if section.pages | length > 3 %}
-        <div class="flex justify-end">
-            {# CTA that links to browsing all pages #}
-            {{ m::button(title="Browse All", href=section.permalink, icon="arrow_forward") }}
-        </div>
-        {% endif %}
-    </div>
-</section>
-
-{# Projects #}
-{{ m::hash_link(name="crates") }}
-<section>
-    <div class="ph2 pv5 mw7 center">
-        <h1 class="center f2 tl tc-m">Crates</h1>
-        {{ m::show_taxonomy_terms(taxonomy='crates') }}
-    </div>
-</section>
+        <h3>{{ config.title }}</h3>
+    </a>
+</nav>
 
 {# About #}
-{{ m::hash_link(name="about") }}
-<div class="bg-near-white black">
-    <section class="ph3 pv5 mw7 center">
-        <h1 class="center f2 tl">About</h1>
-        <div class="serif lh-copy">
-            {# Get about page content from the `about.md` file in content #}
-            {% set about = get_page(path="about.md") %}
-            {{ about.content | safe | markdown }}
-        </div>
-    </section>
-</div>
+<section class="container">
+    <h2>About</h2>
+    {# Get about page content from the `about.md` file in content #}
+    {% set about = get_page(path="about.md") %}
+    {{ about.content | safe }}
+</section>
 
-{% endblock content %}
+<section class="container">
+    <h2>Community</h2>
+    <div style="display: flex; align-items: center; ; gap: 1em;">
+        <div style="display: flex; flex-direction: column;">
+            <h3 style="margin: 0;">Discord</h3>
+            <p>Join RustAudio on Discord to keep up with audio development within the Rust ecosystem, get help with
+                DSP, collaborate on projects, and everything in-between.
+                </br>
+                <a class="button" style="margin-top: 1em" href={{config.extra.discord_invite}} target="_blank">Join
+                    Discord</a>
+            </p>
 
-{% block footer %}
-<footer class="bg-near-black w-100">
-    <div class="ph3 pv4 center mw7 flex items-center justify-between align-center">
-        {# Show our nav again. You know, for safety measures. #}
-        <div class="white">
-            {% for link in config.extra.nav %}
-            <a class="dim pv1 db white f5 no-underline" href="{{ link.url }}">{{ link.title }}</a>
-            {% endfor %}
         </div>
-        <a href="https://www.netlify.com" class="o-50 grow" target="_blank">
-            <img src="https://www.netlify.com/img/global/badges/netlify-dark.svg" />
-        </a>
-        <a href="//u9h.design" target="_blank" class="ph3 pv4 o-20 grow db self-end">
-            <img src="/media/designed.svg" style="width: 100px;" class="db" />
+        <a href={{config.extra.discord_invite}} class="hide-small" target="_blank">
+            <img style="border-radius: 24px"
+                src="https://discord.com/api/guilds/{{config.extra.discord_server_id}}/widget.png?style=banner3" />
         </a>
     </div>
-    <div style="height: 82px;" class="dn-ns db"></div>
-</footer>
-{% endblock footer %}
+</section>
+
+{# Resources #}
+<section class="container">
+    <article>
+        <h1>DSP resources</h1>
+        {% set resources = load_data(path="content/resources.toml") %}
+        {% for group, resources in resources.resources | group_by(attribute="category") %}
+        <h2>{{group | capitalize}}</h2>
+        {% for resource in resources %}
+        <a href={{resource.url}}>{{ resource.name }}</a></br>
+        {% endfor %}
+        {% endfor %}
+    </article>
+</section>
+
+<section>
+    <h2 class="container-full">RustAudio Crates</h2>
+    <div class="crates">
+        {% set crates = load_data(url=config.extra.repos_url, format="json") %}
+        {% for crate in crates | sort(attribute="updated_at") | reverse %}
+        <div class="crate">
+            <a href={{crate.svn_url}}>
+                <h4>
+                    <pre>{{ crate.name }}</pre>
+                </h4>
+            </a>
+            <div class="details">
+                <div class="stars">{{ crate.stargazers_count }} ☆</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock content %}

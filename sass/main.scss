@@ -1,67 +1,124 @@
-@import 'tachyons/tachyons.scss';
-@import 'custom/extra.scss';
+@import 'colors';
+
+.animated-border {
+    height: 4px;
+    background: linear-gradient(90deg, #562D6A 0%, #AB3D6A 25%, #562D6A 50%, #AB3D6A 75%, #562D6A 100%);
+    background-size: 200% 200%;
+    animation: BorderAnimation 2s linear infinite;
+    opacity: 0.3;
+}
+
+@keyframes BorderAnimation {
+    0% {
+        background-position: 0% 0%
+    }
+
+    100% {
+        background-position: 100% 0%
+    }
+}
+
+#slideout-menu {
+    touch-action: none;
+    display: fixed;
+    bottom: 100000px;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    img {
+        height: 40px;
+    }
+    padding: 1rem;
+    h3 {margin: 0;}
+    a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+}
+
+body {
+    font-size: 18px;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+    background: $background;
+    margin: 0;
+    a {text-decoration: none; }
+}
+
+a.button {
+    background: $primary;
+    font-weight: 700;
+    padding: 0.5em 1em;
+    border-radius: 1000px;
+    color: $background;
+    display: inline-block;
+    &:hover {
+        background: lighten($primary, 5);
+    }
+    &:active {
+        background: lighten($primary, 10);
+    }
+}
+
+.container {
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+}
+
+.container-full {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 1rem;
+    
+}
+
+.hide-small {
+    @media screen and (max-width: 700px) {
+        display: none;
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 3rem;
+    background: rgba(0, 0, 0, 0.02);
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1rem; }
+h5 { font-size: 0.75rem; }
+h6 { font-size: 0.6rem; }
 
 article {
-    >:not(pre) {
-        @extend #{'.ph3-ns', '.ph3', '.mw7', '.center-ns', '.db', '.near-black'};
-    }
+    h1 { font-size: 2rem; }
+    h2 { font-size: 1.5rem; }
+    h3 { font-size: 1rem; }
+    h4 { font-size: 0.75rem; }
+    h5 { font-size: 0.6rem; }
+    h6 { font-size: 0.5rem; }
+}
 
-    :not(h1, h2, h3, h4, h5, h6) {
-        @extend #{'.lh-copy'};
-    }
-
-    p,
-    li {
-        @extend #{'.serif'};
-    }
-
-    li {
-        @extend #{'.ml0-l', '.ml3'};
-    }
-
-
-
-    .filename {
-        >div {
-            @extend #{'.black', '.mt0', '.br--top', '.br--left', '.br2'};
-        }
-
-        @extend #{'.near-black', '.bg-near-white', '.br2', '.ph3-ns', '.ph2', '.pv2', '.mw7', '.center', '.br--top', '.flex', '.ba', '.b--black-10'};
-        position: relative;
-        bottom: -3px;
-
-        width: calc(100% - 2rem);
-    }
-
+article {
     pre {
-        @extend #{'.pa3-ns', '.pa2',  '.br2', '.mw7', '.center', '.mt0',  '.ba', '.b--black-10'};
         white-space: pre-wrap;
         word-break: break-word;
-        font-size: 0.9rem;
-        line-height: 1.3;
-
-        width: calc(100% - 2rem);
-    }
-
-    code {
-        @extend #{'.bg-near-white', '.pa1', '.br1', '.ba', '.b--black-05'};
-        padding-top: 0.1em;
-        padding-bottom: 0.1em;
-        position: relative;
     }
 
     >blockquote {
-        @extend #{'.mw7', '.center', '.ph4-ns', '.ph2', '.mh2', '.pv3', '.border-box', '.bg-near-white', '.bl', '.bw2', '.br2', '.f5'};
-        border-color: $blue;
-        width: calc(100% - 2rem);
-
         &:before {
-            @extend #{'.mr2', '.f3'};
-            color: $blue;
             content: "◈";
             vertical-align: -0.1em;
         }
-
         p {
             display: inline;
         }
@@ -72,12 +129,41 @@ p,
 ul,
 li {
     a {
-        color: $blue;
         text-decoration: none;
         font-weight: normal;
     }
 }
 
-hr {
-    @extend #{'.ba', '.b--black-05', '.bw1'};
+section {
+     margin: 4em 0;
+}
+
+.crates {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    h4 {
+        margin: 0;
+    }
+    .crate {
+        border-bottom: 1px $border-light solid;  
+        border-right: 1px $border-light solid;  
+        &:nth-child(4n), &:last-child {
+            border-right: none;
+        } 
+        &:nth-child(-n+4) {
+            border-top: 1px $border-light solid;
+        } 
+        display: flex;
+        justify-content: space-between;
+        padding: 1em;
+        gap: 1em;
+        .details {
+            display: flex;
+            gap: 0.5em;
+            align-items: center;
+        }
+        p, pre {
+            margin: 0;
+        }
+    }
 }
