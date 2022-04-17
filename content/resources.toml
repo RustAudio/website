@@ -1,0 +1,59 @@
+[[resources]]
+name = "The Scientist and Engineer's Guide to Digital Signal Processing"
+url = "http://www.dspguide.com/"
+category = "general"
+
+[[resources]]
+name = "MIT OpenCourseWare: 6.003 Signals and Systems 1"
+url = "https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-003-signals-and-systems-fall-2011/"
+category = "general"
+
+[[resources]]
+name = "MIT OpenCourseWare: 6.007 Signals and Systems 2"
+url = "https://ocw.mit.edu/resources/res-6-007-signals-and-systems-spring-2011/"
+category = "general"
+
+[[resources]]
+name = "Audio doghouse"
+url = "https://www.objc.io/issues/24-audio/audio-dog-house/"
+category = "general"
+
+[[resources]]
+name = "Alias-Free Digital Synthesis of Classic Analog Waveforms (whitepaper)"
+url = "https://ccrma.stanford.edu/~stilti/papers/blit.pdf"
+category = "bandlimited synthesis"
+
+[[resources]]
+name = "Stefan Stenzel - The amazing usefulness of band limited impulse trains"
+url = "https://www.youtube.com/watch?v=lpM4Tawq-XU"
+category = "bandlimited synthesis"
+
+[[resources]]
+name = "Interval Tree"
+url = "https://en.wikipedia.org/wiki/Interval_tree"
+category = "structures and algorithms"
+
+[[resources]]
+name = "Finger Tree"
+url = "https://en.wikipedia.org/wiki/Finger_tree)"
+category = "structures and algorithms"
+
+[[resources]]
+name = "Radix Tree"
+url = "https://en.wikipedia.org/wiki/Radix_tree)"
+category = "structures and algorithms"
+
+[[resources]]
+name = "Persistent Vector"
+url = "https://hypirion.com/musings/understanding-persistent-vector-pt-1) (Clojure)"
+category = "structures and algorithms"
+
+[[resources]]
+name = "Immutable data structures"
+url = "https://www.youtube.com/watch?v=ZsryQp0UAC8) (C++)"
+category = "structures and algorithms"
+
+[[resources]]
+name = "Xiph.org digital show-and-tell: Exploring sample rate and bit depth"
+url = "https://xiph.org/video/vid2.shtml"
+category = "misc"

@@ -13,25 +13,14 @@ highlight_theme = "ir-white"
 # Whether to build a search index to be used later on by a JavaScript library
 build_search_index = true
 
-title = "rust.audio"
+title = "RustAudio"
 
 taxonomies = [
-    # CATEGORY IDEAS:
-    # dsp
-    # synthesis
-    # processing
-    # theory
-    # gui
-    # tutorial
-    { name = "topics" },
-    { name = "crates" },
-    { name = "contributors" },
 ]
 
 [extra]
-logo = "/media/logo.svg"
-nav = [ { title = "Topics", url = "/topics" }
-      , { title = "Crates", url = "/crates"}
-      , { title = "About", url = "/#about"}
-      ]
+logo = "/media/logo.png"
 discourse_url = "https://rust-audio.discourse.group/"
+repos_url = "https://api.github.com/orgs/RustAudio/repos"
+discord_server_id = "590254806208217089"
+discord_invite = "https://discord.gg/8qW6q2k"

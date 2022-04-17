@@ -10,84 +10,22 @@
     <link href="https://fonts.googleapis.com/css?family=Barlow:400,600,700|PT+Serif:400,400i,700|Inconsolata:400,700"
         rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="/js/main.js" async defer></script>
     {# In case we need some specific script or something #}
     {% block extra_head %}
     {% endblock extra_head %}
 </head>
 
-<body class="sans-serif">
-
-    {# If we defined a navigation, include that in a nav element. #}
-    {% if config.extra.nav %}
-    <nav class="bg-white shadow-3 fixed w-100 db-l db-m dn" style="z-index: 10000;">
-        <div class="center mw7 flex items-center justify-between">
-            {% if config.extra.logo %}
-            <a href="/">
-                <img src="{{ config.extra.logo }}" style="width: 100px;" class="pl3" />
-            </a>
-            {% endif %}
-
-            <div class="flex">
-                {% for link in config.extra.nav %}
-                <a class="dim ph3 pv4 db f5 black no-underline ttu tracked" href="{{ link.url }}">{{ link.title }}</a>
-                {% endfor %}
-            </div>
-        </div>
-        <div class="animated-border"></div>
-    </nav>
-
-    {% block spacer %}<div style="height: 82px;" class="dn db-m db-l"></div>{% endblock %}
-
-    {# mobile header #}
-    <nav id="slideout-menu" data-open="false" class="bg-white shadow-3 dn-l dn-m db fixed w-100" style="z-index: 10000;">
-        <div>
-            {# Menu indicator #}
-            <div id="slideout-menu-header" style="z-index: 1000000;" class="flex center mw7 items-center justify-between">
-                {% if config.extra.logo %}
-                    <a href="/" class="pl3">
-                        <img src="{{ config.extra.logo }}" style="width: 100px;" class="pl3" />
-                    </a>
-                {% endif %}
-
-                {# Mobile navigation slide up #}
-                <strong class="dim ph4 pv4 db f5 black no-underline ttu tracked">Open Menu</strong>
-            </div>
-
-            <hr>
-    
-            <div class="flex flex-column">
-                {% for link in config.extra.nav %}
-                    <a class="dim pa4 db f4 black no-underline" href="{{ link.url }}">
-                        {{ link.title }}
-                    </a>
-                {% endfor %}
-            </div>
-        </div>
-    </nav>
-
-    <div class="dn-l dn-m animated-border fixed" style="z-index: 10000; bottom: 0; left: 0; right: 0;"></div>
-
-    {% endif %}
+<body>
     {% block content %}{% endblock content %}
     {% block extra_body %}{% endblock extra_body %}
     {% block footer %}
-    <footer class="w-100">
-        <div class="ph3 pv4 center mw7 flex items-center justify-between align-center">
-            {# Show our nav again. You know, for safety measures. #}
-            <div>
-                {% for link in config.extra.nav %}
-                    <a class="dim pv1 db black f5 no-underline" href="{{ link.url }}">{{ link.title }}</a>
-                {% endfor %}
-            </div>
-            <a href="https://www.netlify.com" class="grow" target="_blank">
-                <img src="https://www.netlify.com/img/global/badges/netlify-light.svg" />
-            </a>
-            <a href="//u9h.design" target="_blank" class="ph3 pv4 o-50 grow db self-end">
-                <img src="/media/designed-dark.svg" style="width: 100px;" class="db" />
+    <footer>
+        <div>
+            <a href="//u9h.design" target="_blank">
+                <img src="/media/designed-dark.svg" style="width: 100px;" />
             </a>
         </div>
-        <div style="height: 82px;" class="dn-ns db"></div>
+        <div style="height: 82px;"></div>
     </footer>
     {% endblock footer %}
 </body>
