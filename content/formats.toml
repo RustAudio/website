@@ -1,18 +1,38 @@
 # Audio plugin formats
 
+# Format for specifying a format 🤔
+#
+# ```
+# [[formats]]
+#
+# # Human readable format name
+# name = "MyFormatName"
+#
+# # Short synopsis of the format
+# description = "This format was designed for Plan9 computers only"
+#
+# # Whether or not the format is permissively licensed
+# proprietary = false
+#
+# # Optionally, list crates that work with this format
+# crates = [
+#     { name = "plan9-plug", url = "https://example.com/mycoolsite/plan9-plugin" },
+# ]
+#
+# # Optionally, list additional resources on this format
+# resources = [
+#    { name = "My link docs name", url = "http://example.com/docs" },
+# ]
+# ```
+
 [[formats]]
-# Human readable format name
 name = "VST"
-# Short synopsis of the format
 description = "VST2 was one of the most common standards, but is now unlicensed. Instead, VST3 is recommended. VSTs are generally supported in most DAWs."
-# Whether or not the format is permissively licensed
 proprietary = true
-# Optional crates that work with this format
 crates = [
     { name = "vst", url = "https://github.com/RustAudio/vst-rs" },
     { name = "vst3-sys", url = "https://github.com/RustAudio/vst3-sys" },
 ]
-# Optional additional resources on this format
 resources = []
 
 [[formats]]

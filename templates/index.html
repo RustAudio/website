@@ -25,7 +25,7 @@
     <div style="display: flex; gap: 2em;">
         <div style="display: flex; flex-direction: column;">
             <h4 style="margin: 0;">Discord</h4>
-            <p>Join RustAudio on Discord to keep up with audio development within the Rust ecosystem, get help with
+            <p>Join Rust Audio on Discord to keep up with audio development within the Rust ecosystem, get help with
                 DSP, collaborate on projects, and everything in-between.
                 </br>
                 <a class="button" style="margin-top: 1em" href={{config.extra.discord_invite}} target="_blank">Join
@@ -108,7 +108,8 @@
 {# Crates #}
 
 <section>
-    <h2 class="container-full">RustAudio Crates</h2>
+    <h2>Projects</h2>
+    <h2 class="container-full">Rust Audio Crates</h2>
     <div class="crates">
         {% set crates = load_data(url=config.extra.repos_url, format="json") %}
         {% for crate in crates | sort(attribute="updated_at") | reverse %}

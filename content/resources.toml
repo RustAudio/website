@@ -1,3 +1,18 @@
+# Resources format
+#
+# ```
+# [[resources]]
+#
+# A descriptive but short name for the resource
+# name = "My resource name"
+#
+# # Link directly to the resource named
+# url = "http://www.example.com/dsp.html"
+#
+# # Avoid creating new categories unless completely necessary
+# category = "general"
+# ```
+
 [[resources]]
 name = "The Scientist and Engineer's Guide to Digital Signal Processing"
 url = "http://www.dspguide.com/"
