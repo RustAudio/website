@@ -44,15 +44,15 @@
 
 {# Resources #}
 <section class="container">
-    <h1>Resources</h1>
+    <h2>Resources</h2>
 
     <article>
-        <h1>Audio plugin formats</h1>
+        <h2>Audio plugin formats</h2>
         {% set formats = load_data(path="content/formats.toml") %}
         {% for format in formats.formats %}
-        <h2>
+        <h3>
             <pre>{{format.name}}</pre>
-        </h2>
+        </h3>
 
         <small>{% if format.proprietary %}Proprietary{% else %}Free & Open Source
             {% endif %}</small>
@@ -60,7 +60,7 @@
         <p>{{format.description}}</p>
 
         {% if format.resources %}
-        <h3>Resources</h3>
+        <h4>Resources</h4>
         <ul>
             {% for resource in format.resources %}
             <a href={{resource.url}}>
@@ -71,7 +71,7 @@
         {% endif %}
 
         {% if format.crates %}
-        <h3>Crates</h3>
+        <h4>Crates</h4>
         <ul>
             {% for crate in format.crates %}
             <a href={{crate.url}}>
@@ -112,9 +112,9 @@
         {% for crate in crates | sort(attribute="updated_at") | reverse %}
         <div class="crate">
             <a href={{crate.svn_url}}>
-                <h4>
+                <h5>
                     <pre>{{ crate.name }}</pre>
-                </h4>
+                </h5>
             </a>
             <div class="details">
                 <div class="stars">{{ crate.stargazers_count }} ☆</div>
