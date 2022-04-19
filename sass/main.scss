@@ -46,10 +46,11 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     background: $background;
     margin: 0;
+    margin-bottom: 8em;
     a {text-decoration: none; }
 }
 
-a.button {
+.button {
     background: $primary;
     font-weight: 700;
     padding: 0.5em 1em;
@@ -64,7 +65,18 @@ a.button {
     }
 }
 
-a.tag {
+.filters {
+    margin-bottom: 1em;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3em;
+    align-items: flex-start;
+}
+
+.tag {
     background: $background-low;
     font-weight: 600;
     padding: 0.1em 0.6em;
@@ -75,12 +87,19 @@ a.tag {
     font-size: 0.8rem;
     vertical-align: baseline;
     i{height: 0; svg{width:16px}}
+    cursor: pointer;
     &:hover {
         background: darken($background-low, 5);
     }
     &:active {
         background: darken($background-low, 10);
     }
+}
+
+.tag.toggled {
+    background: $accent;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: $background;
 }
 
 i{ 
@@ -182,40 +201,11 @@ section {
         margin: 0;
     }
     .crate {
-        border-bottom: 1px $border solid;  
-        border-right: 1px $border solid;  
-        @media screen and ( min-width: 960px) {
-            &:nth-child(4n), &:last-child {
-                border-right: none;
-            } 
-            &:nth-child(-n+4) {
-                border-top: 1px $border solid;
-            }
-        }
-        @media screen and (max-width: 960px) and (min-width: 720px) {
-            &:nth-child(3n), &:last-child {
-                border-right: none;
-            } 
-            &:nth-child(-n+3) {
-                border-top: 1px $border solid;
-            }
-        }
-        @media screen and (max-width: 720px) and (min-width: 500px) {
-            &:nth-child(2n), &:last-child {
-                border-right: none;
-            } 
-            &:nth-child(-n+2) {
-                border-top: 1px $border solid;
-            }
-        }
-        @media screen and (max-width: 500px) {
-            border: none;
-            border-top: 1px $border solid;
-        }
+        border-top: 1px $border solid;
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
         padding: 1em;
-        gap: 1em;
+        gap: 0.4em 1em;
         .details {
             display: flex;
             gap: 0.5em;
@@ -223,6 +213,9 @@ section {
         }
         p, pre {
             margin: 0;
+            font-size: 0.8em;
+            line-height: 1.4;
         }
+       
     }
 }

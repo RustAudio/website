@@ -44,6 +44,79 @@
 
 <hr>
 
+{# Crates #}
+
+
+<section>
+    <div class="container-full">
+        <h2>Audio crates</h2>
+        <div class="filters tags"></div>
+    </div>
+    <div class="crates" id="crates">
+        {% set crates = load_data(path="content/crates.toml") %}
+        {% for source, crates in crates.crates | group_by(attribute="source") %}
+
+        {% for crate in crates %}
+
+        {# Obtain API data #}
+        {% if source == "github" %}
+        {# Get github API page to pull information #}
+        {% set data = load_data(url="https://api.github.com/repos/"~crate.key, format="json") %}
+        {% set name = data.name %}
+        {% set description = data.description %}
+        {% set url = data.svn_url %}
+        {% set keywords = data.topics %}
+
+        {% elif source == "crates" %}
+        {# Get crates API page to pull information #}
+        {% set data = load_data(url="https://crates.io/api/v1/crates/"~crate.key, format="json") %}
+        {% set name = data.crate.name %}
+        {% set description = data.crate.description %}
+        {% set url = "https://crates.io/crates/"~name %}
+        {% set keywords = data.crate.keywords %}
+
+        {% endif %}
+
+        <div class='crate' data-keywords='{{ keywords | join(sep=" ") }}'>
+            <a target=" _blank" href={{url}}>
+                <h4>
+                    <pre>{{ name }}</pre>
+                </h4>
+            </a>
+            <p>{{ description }}</p>
+
+            <div class="tags">
+                {% for keyword in keywords %}
+                <span class="filter-tag tag" data-keyword={{keyword}}>{{keyword}}</span>
+                {% endfor %}
+            </div>
+            {# <div class="details">
+                <div class="stars">{{ crate.stargazers_count }} ☆</div>
+            </div> #}
+        </div>
+        {% endfor %}
+        {% endfor %}
+    </div>
+
+    {# <div class="crates">
+        {% set crates = load_data(url=config.extra.repos_url, format="json") %}
+        {% for crate in crates | sort(attribute="updated_at") | reverse %}
+        <div class="crate">
+            <a target="_blank" href={{crate.svn_url}}>
+                <h5>
+                    <pre>{{ crate.name }}</pre>
+                </h5>
+            </a>
+            <div class="details">
+                <div class="stars">{{ crate.stargazers_count }} ☆</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div> #}
+</section>
+
+<hr>
+
 {# Resources #}
 <section class="container">
     <h2>Resources</h2>
@@ -108,27 +181,83 @@
     </article>
 </section>
 
-<hr>
+<script>
+    (function () {
 
-{# Crates #}
+        var element = document.querySelector("#crates");
+        let tags = document.querySelectorAll(".filter-tag");
+        var filter_element = document.querySelector(".filters");
+        var filters = [];
+        [].forEach.call(tags, function (tag) {
+            filters.push(tag.innerText)
+        });
+        // Dedup
+        filters = [...new Set(filters)].sort();
+        enabled_filters = []
 
-<section>
-    <h2 class="container-full">Rust Audio Crates</h2>
-    <div class="crates">
-        {% set crates = load_data(url=config.extra.repos_url, format="json") %}
-        {% for crate in crates | sort(attribute="updated_at") | reverse %}
-        <div class="crate">
-            <a target="_blank" href={{crate.svn_url}}>
-                <h5>
-                    <pre>{{ crate.name }}</pre>
-                </h5>
-            </a>
-            <div class="details">
-                <div class="stars">{{ crate.stargazers_count }} ☆</div>
-            </div>
-        </div>
-        {% endfor %}
-    </div>
-</section>
+        function build_filters() {
+            filter_element.innerHTML = "";
+            filters.forEach((filter) => {
+                var filter_el = document.createElement("DIV");
+                filter_el.classList.add("tag");
+                filter_el.classList.add("filter-tag");
+                filter_el.dataset.keyword = filter;
+                filter_el.innerText = filter;
+                filter_element.appendChild(filter_el);
+            });
+        }
+
+        function filter_entries() {
+            // Get all filterable elements
+            let elements = document.querySelectorAll("#crates .crate");
+            [].forEach.call(elements, function (el) {
+                let keywords = el.dataset.keywords.split(" ");
+                let is_active = keywords.some(r => enabled_filters.indexOf(r) >= 0);
+                if (enabled_filters.length == 0) {
+                    el.style.display = "block";
+                } else {
+                    if (!is_active) {
+                        el.style.display = "none";
+                    } else {
+                        el.style.display = "block";
+                    }
+                }
+            });
+        }
+
+        function toggle_filter(keyword) {
+            let tags_with_keyword = document.querySelectorAll(`[data-keyword="${keyword}"]`);
+            let index = enabled_filters.indexOf(keyword);
+            if (index > -1) {
+                console.log("toggling off tag");
+                // exists, toggle off
+                enabled_filters.splice(index, 1);
+                [].forEach.call(tags_with_keyword, function (el) {
+                    el.classList.remove("toggled");
+                });
+            } else {
+                console.log("toggling on tag");
+                // doesn't yet exist, push
+                enabled_filters.push(keyword);
+                // toggle style for all tags
+                [].forEach.call(tags_with_keyword, function (el) {
+                    el.classList.add("toggled");
+                });
+            }
+            filter_entries();
+        }
+
+        build_filters();
+
+        tags = document.querySelectorAll(".filter-tag");
+        [].forEach.call(tags, function (tag) {
+            tag.addEventListener("click", (ev) => {
+                let keyword = tag.innerText;
+                toggle_filter(keyword);
+            });
+        });
+
+    })();
+</script>
 
 {% endblock content %}

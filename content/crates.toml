@@ -1,0 +1,28 @@
+[[crates]]
+source = "crates"
+key = "fundsp"
+
+[[crates]]
+source = "crates"
+key = "cpal"
+
+[[crates]]
+source = "crates"
+key = "coremidi"
+
+[[crates]]
+source = "github"
+key = "wrl/baseplug"
+
+[[crates]]
+source = "github"
+key = "RustAudio/baseview"
+
+[[crates]]
+source = "github"
+key = "robbert-vdh/nih-plug"
+
+[[crates]]
+source = "github"
+key = "glowcoil/clap-sys"
+
