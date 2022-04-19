@@ -1,28 +1,35 @@
 [[crates]]
 source = "crates"
 key = "fundsp"
+tags = ["DSP"]
 
 [[crates]]
 source = "crates"
 key = "cpal"
+tags = ["devices"]
 
 [[crates]]
 source = "crates"
 key = "coremidi"
+tags = ["MIDI"]
 
 [[crates]]
 source = "github"
 key = "wrl/baseplug"
+tags = ["framework","VST2"]
 
 [[crates]]
 source = "github"
 key = "RustAudio/baseview"
+tags = ["windowing","GUI"]
 
 [[crates]]
 source = "github"
 key = "robbert-vdh/nih-plug"
+tags = ["framework","VST3","CLAP"]
 
 [[crates]]
 source = "github"
 key = "glowcoil/clap-sys"
+tags = ["bindings","CLAP"]
 

@@ -65,7 +65,7 @@
         {% set name = data.name %}
         {% set description = data.description %}
         {% set url = data.svn_url %}
-        {% set keywords = data.topics %}
+        {# {% set keywords = data.topics %} #}
 
         {% elif source == "crates" %}
         {# Get crates API page to pull information #}
@@ -73,11 +73,11 @@
         {% set name = data.crate.name %}
         {% set description = data.crate.description %}
         {% set url = "https://crates.io/crates/"~name %}
-        {% set keywords = data.crate.keywords %}
+        {# {% set keywords = data.crate.keywords %} #}
 
         {% endif %}
 
-        <div class='crate' data-keywords='{{ keywords | join(sep=" ") }}'>
+        <div class='crate' data-keywords='{{ crate.tags | join(sep=" ") }}'>
             <a target=" _blank" href={{url}}>
                 <h4>
                     <pre>{{ name }}</pre>
@@ -86,8 +86,8 @@
             <p>{{ description }}</p>
 
             <div class="tags">
-                {% for keyword in keywords %}
-                <span class="filter-tag tag" data-keyword={{keyword}}>{{keyword}}</span>
+                {% for tag in crate.tags %}
+                <span class="filter-tag tag" data-keyword={{tag}}>{{tag}}</span>
                 {% endfor %}
             </div>
             {# <div class="details">
@@ -189,10 +189,12 @@
         var filter_element = document.querySelector(".filters");
         var filters = [];
         [].forEach.call(tags, function (tag) {
-            filters.push(tag.innerText)
+            filters.push(tag.dataset.keyword)
         });
         // Dedup
-        filters = [...new Set(filters)].sort();
+        filters = [...new Set(filters)].sort(function (a, b) {
+            return a.localeCompare(b);
+        });
         enabled_filters = []
 
         function build_filters() {
@@ -252,7 +254,7 @@
         tags = document.querySelectorAll(".filter-tag");
         [].forEach.call(tags, function (tag) {
             tag.addEventListener("click", (ev) => {
-                let keyword = tag.innerText;
+                let keyword = tag.dataset.keyword;
                 toggle_filter(keyword);
             });
         });
