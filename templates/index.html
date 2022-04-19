@@ -52,12 +52,17 @@
         <h2>Audio plugin formats</h2>
         {% set formats = load_data(path="content/formats.toml") %}
         {% for format in formats.formats %}
-        <h3>
+        <h3 style="display: inline-block;">
             <pre>{{format.name}}</pre>
         </h3>
 
-        <small>{% if format.proprietary %}Proprietary{% else %}Free & Open Source
-            {% endif %}</small>
+
+        <span style="vertical-align: text-bottom; margin-left: 0.5em;">
+            {% if format.license.url %}<a target="_blank" class="license tag" href={{format.license.url}}>{% endif %}
+                {{format.license.name}}
+                {% if format.license.url %}➜
+            </a>{% endif %}
+        </span>
 
         <p>{{format.description}}</p>
 
@@ -65,7 +70,7 @@
         <h4>Resources</h4>
         <ul>
             {% for resource in format.resources %}
-            <a href={{resource.url}}>
+            <a target="_blank" href={{resource.url}}>
                 <li>{{resource.name}}</li>
             </a>
             {% endfor %}
@@ -76,7 +81,7 @@
         <h4>Crates</h4>
         <ul>
             {% for crate in format.crates %}
-            <a href={{crate.url}}>
+            <a target="_blank" href={{crate.url}}>
                 <li>{{crate.name}}</li>
             </a>
             {% endfor %}
@@ -94,7 +99,7 @@
         <h2>{{group | capitalize}}</h2>
         <ul>
             {% for resource in resources %}
-            <a href={{resource.url}}>
+            <a target="_blank" href={{resource.url}}>
                 <li>{{resource.name}}</li>
             </a>
             {% endfor %}
@@ -108,13 +113,12 @@
 {# Crates #}
 
 <section>
-    <h2>Projects</h2>
     <h2 class="container-full">Rust Audio Crates</h2>
     <div class="crates">
         {% set crates = load_data(url=config.extra.repos_url, format="json") %}
         {% for crate in crates | sort(attribute="updated_at") | reverse %}
         <div class="crate">
-            <a href={{crate.svn_url}}>
+            <a target="_blank" href={{crate.svn_url}}>
                 <h5>
                     <pre>{{ crate.name }}</pre>
                 </h5>

@@ -1,5 +1,7 @@
-$border-light: #e1d8dd;
+$border: #e1d8dd;
 $background: #ffffff;
+$background-low: #f3f3f3;
 $primary: #09184f;
-
+$contrast: darken($primary, 10);
+$contrast-low: lighten(desaturate($primary, 70), 20);
 $shadow: 0px 0px 3px 0px #1110121a;

@@ -64,6 +64,32 @@ a.button {
     }
 }
 
+a.tag {
+    background: $background-low;
+    font-weight: 600;
+    padding: 0.1em 0.6em;
+    border-radius: 1000px;
+    color: $contrast-low;
+    display: inline-block;
+    border: 1px solid $border;
+    font-size: 0.8rem;
+    vertical-align: baseline;
+    i{height: 0; svg{width:16px}}
+    &:hover {
+        background: darken($background-low, 5);
+    }
+    &:active {
+        background: darken($background-low, 10);
+    }
+}
+
+i{ 
+    vertical-align: middle;
+    svg {
+        width: 24px;
+    }
+}
+
 .container {
     max-width: 800px;
     width: 100%;
@@ -86,7 +112,7 @@ a.button {
 }
 
 hr {
-    border: 1px solid $border-light;
+    border: 1px solid $border;
     margin: 3em 0;
 }
 
@@ -156,14 +182,14 @@ section {
         margin: 0;
     }
     .crate {
-        border-bottom: 1px $border-light solid;  
-        border-right: 1px $border-light solid;  
+        border-bottom: 1px $border solid;  
+        border-right: 1px $border solid;  
         @media screen and ( min-width: 960px) {
             &:nth-child(4n), &:last-child {
                 border-right: none;
             } 
             &:nth-child(-n+4) {
-                border-top: 1px $border-light solid;
+                border-top: 1px $border solid;
             }
         }
         @media screen and (max-width: 960px) and (min-width: 720px) {
@@ -171,7 +197,7 @@ section {
                 border-right: none;
             } 
             &:nth-child(-n+3) {
-                border-top: 1px $border-light solid;
+                border-top: 1px $border solid;
             }
         }
         @media screen and (max-width: 720px) and (min-width: 500px) {
@@ -179,12 +205,12 @@ section {
                 border-right: none;
             } 
             &:nth-child(-n+2) {
-                border-top: 1px $border-light solid;
+                border-top: 1px $border solid;
             }
         }
         @media screen and (max-width: 500px) {
             border: none;
-            border-top: 1px $border-light solid;
+            border-top: 1px $border solid;
         }
         display: flex;
         justify-content: space-between;
