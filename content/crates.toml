@@ -49,6 +49,11 @@ source = "github"
 tags = ["DAWs"]
 
 [[crates]]
+key = "WeirdConstructor/HexoSynth"
+source = "github"
+tags = ["synthesizer", "plugin"]
+
+[[crates]]
 key = "vizia/vizia"
 source = "github"
 tags = ["GUI", "frameworks"]
