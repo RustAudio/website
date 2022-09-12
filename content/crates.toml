@@ -97,3 +97,9 @@ tags = ["languages", "DSP"]
 key = "rustfft"
 source = "crates"
 tags = ["FFT", "DSP"]
+
+[[crates]]
+key = "hound"
+source = "crates"
+tags = ["streaming", "frameworks"]
+
