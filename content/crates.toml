@@ -66,12 +66,17 @@ tags = ["languages", "DSP"]
 [[crates]]
 key = "rodio"
 source = "crates"
-tags = ["MIDI"]
+tags = ["playback"]
 
 [[crates]]
 key = "kira"
 source = "crates"
-tags = ["games"]
+tags = ["games", "playback"]
+
+[[crates]]
+key = "awedio"
+source = "crates"
+tags = ["playback", "embedded"]
 
 [[crates]]
 key = "rubato"
