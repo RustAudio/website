@@ -1,0 +1,72 @@
+# Audio plugin formats
+
+# Format for specifying a format 🤔
+#
+# ```
+# [[formats]]
+#
+# # Human readable format name
+# name = "MyFormatName"
+#
+# # Link to the homepage
+# link = "https://example.com"
+#
+# # Short synopsis of the format
+# description = "This format was designed for Plan9 computers only"
+#
+# # The license of the format
+# license = { name = "MIT", url = "https://example.com/license.html" }
+#
+# # Optionally, list crates that work with this format
+# crates = [
+#     { name = "plan9-plug", url = "https://example.com/mycoolsite/plan9-plugin" },
+# ]
+#
+# # Optionally, list additional resources on this format
+# resources = [
+#    { name = "My link docs name", url = "http://example.com/docs" },
+# ]
+# ```
+
+[[formats]]
+name = "VST"
+link = "https://steinbergmedia.github.io/vst3_dev_portal/pages/index.html"
+description = "VST can refer to several different versions of the VST format by Steinberg. VST2 was one of the most common standards, but is now unlicensed. Instead, VST3 is recommended and is generally supported in most DAWs. Note that the Rust vst3-sys crate currently relies on GPLv3 code."
+license = { name = "GPLv3 or Proprietary", url = "https://developer.steinberg.help/pages/viewpage.action?pageId=9797944" }
+crates = [
+    { name = "vst", url = "https://github.com/RustAudio/vst-rs" },
+    { name = "vst3-sys", url = "https://github.com/RustAudio/vst3-sys" },
+]
+resources = []
+
+[[formats]]
+name = "AudioUnit"
+link = "https://developer.apple.com/documentation/audiounit/"
+description = "AudioUnit (AU) is only available on Apple platforms. AU v2 is simlar to VST, and AU v3 follows an Apple framework approach, which is harder to implement without Apple tools. Currently, no Rust libraries implement the AudioUnit standard."
+license = { name = "Proprietary", url = "https://developer.apple.com/licensing-trademarks/audio-units/" }
+resources = [
+    { name = "Rust CoreAudio - AudioUnit struct documentation", url = "http://rustaudio.github.io/coreaudio-rs/coreaudio/audio_unit/struct.AudioUnit.html" },
+    { name = "Rust CoreAudio - Possibility of creating AU plugins", url = "https://github.com/RustAudio/coreaudio-rs/issues/52" },
+    { name = "Rust CoreAudio - AudioUnit implementation", url = "https://github.com/RustAudio/coreaudio-rs/blob/master/src/audio_unit/mod.rs" },
+    { name = "DPlug - AudioUnit implemented in DLang", url = "https://github.com/AuburnSounds/Dplug/tree/master/au/dplug/au" },
+]
+
+[[formats]]
+name = "LV2"
+link = "https://lv2plug.in/"
+description = "LV2 is only supported on Linux with a few exceptions. One interesting feature is that all LV2 plugin hosts and plugins are backwards compatible with previous versions."
+license = { name = "ISC", url = "https://gitlab.com/lv2/lv2/-/blob/master/COPYING" }
+crates = [
+    { name = "rust-lv2", url = "https://github.com/RustAudio/rust-lv2" },
+    { name = "lv2rs", url = "https://github.com/Janonard/lv2rs" },
+]
+resources = [
+    { name = "LV2 Crate implementation and Design on rust.audio", url = "https://rust-audio.discourse.group/t/lv2-crate-implementation-and-design/71/2" },
+]
+
+[[formats]]
+name = "CLAP"
+link = "https://cleveraudio.org/"
+description = "CLAP is a relatively new plugin format with permissive licensing. It does not currently have wide support outside of Bitwig."
+license = { name = "MIT", url = "https://github.com/free-audio/clap/blob/main/LICENSE" }
+crates = [{ name = "clap-lv2", url = "https://github.com/glowcoil/clap-sys" }]
