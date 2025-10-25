@@ -1,24 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>{{ config.title }}</title>
+        <link rel="stylesheet" href="/main.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Barlow:400,600,700|PT+Serif:400,400i,700|Inconsolata:400,700"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/icon?family=Material+Icons"
+            rel="stylesheet"
+        />
+        {# In case we need some specific script or something #} {% block
+        extra_head %} {% endblock extra_head %}
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{ config.title }}</title>
-    <link rel="stylesheet" href="/main.css">
-    <link href="https://fonts.googleapis.com/css?family=Barlow:400,600,700|PT+Serif:400,400i,700|Inconsolata:400,700"
-        rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    {# In case we need some specific script or something #}
-    {% block extra_head %}
-    {% endblock extra_head %}
-</head>
+    <body>
+        <nav>
+            <a href="/"
+                >{% if config.extra.logo %}
+                <img src="{{config.extra.logo}}" />
+                {% endif %}
+                <h3>{{ config.title }}</h3>
+            </a>
 
-<body>
-    {% block content %}{% endblock content %}
-    {% block extra_body %}{% endblock extra_body %}
-    {% block footer %}{% endblock footer %}
-</body>
-
+            <a href="/community"> Community </a>
+        </nav>
+        {% block content %}{% endblock content %} {% block extra_body %}{%
+        endblock extra_body %} {% block footer %}{% endblock footer %}
+    </body>
 </html>
