@@ -1,0 +1,18 @@
+{% extends "page.html" %}
+{% import "macros.html" as m %}
+
+{% block content %}
+<div class="container">
+
+{% set resources = load_data(path="content/resources.toml") %}
+{% for group, resources in resources.resources | group_by(attribute="category") %}
+<h2>{{group | capitalize}}</h2>
+<ul>
+    {% for resource in resources %}
+    <a target="_blank" href={{resource.url}}>
+        <li>{{resource.name}}</li>
+    </a>
+    {% endfor %}
+</ul>
+{% endfor %}
+{% endblock content %}

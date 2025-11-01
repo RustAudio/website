@@ -1,8 +1,15 @@
-@import 'colors';
+@import "colors";
 
 .animated-border {
     height: 4px;
-    background: linear-gradient(90deg, #562D6A 0%, #AB3D6A 25%, #562D6A 50%, #AB3D6A 75%, #562D6A 100%);
+    background: linear-gradient(
+        90deg,
+        #562d6a 0%,
+        #ab3d6a 25%,
+        #562d6a 50%,
+        #ab3d6a 75%,
+        #562d6a 100%
+    );
     background-size: 200% 200%;
     animation: BorderAnimation 2s linear infinite;
     opacity: 0.3;
@@ -10,11 +17,11 @@
 
 @keyframes BorderAnimation {
     0% {
-        background-position: 0% 0%
+        background-position: 0% 0%;
     }
 
     100% {
-        background-position: 100% 0%
+        background-position: 100% 0%;
     }
 }
 
@@ -32,12 +39,18 @@ nav {
         height: 40px;
     }
     padding: 1rem;
-    h3 {margin: 0;}
+    h3 {
+        margin: 0;
+    }
     a {
         display: flex;
         align-items: center;
         gap: 1rem;
     }
+}
+
+p {
+    margin-block-start: 0;
 }
 
 body {
@@ -47,7 +60,9 @@ body {
     background: $background;
     margin: 0;
     margin-bottom: 8em;
-    a {text-decoration: none; }
+    a {
+        text-decoration: none;
+    }
 }
 
 .button {
@@ -87,7 +102,12 @@ body {
     border: 1px solid $border;
     font-size: 0.8rem;
     vertical-align: baseline;
-    i{height: 0; svg{width:16px}}
+    i {
+        height: 0;
+        svg {
+            width: 16px;
+        }
+    }
     cursor: pointer;
     &:hover {
         background: darken($background-low, 5);
@@ -103,7 +123,7 @@ body {
     color: $background;
 }
 
-i{ 
+i {
     vertical-align: middle;
     svg {
         width: 24px;
@@ -122,7 +142,6 @@ i{
     width: 100%;
     box-sizing: border-box;
     padding: 0 1rem;
-    
 }
 
 .hide-small {
@@ -136,24 +155,54 @@ hr {
     margin: 3em 0;
 }
 
-h1,h2,h3,h4,h5,h6,pre {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre {
     margin: 0.2em 0;
 }
 
-h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem; }
-h3 { font-size: 2rem; }
-h4 { font-size: 1.5rem; }
-h5 { font-size: 1rem; }
-h6 { font-size: 0.75rem; }
+h1 {
+    font-size: 3rem;
+}
+h2 {
+    font-size: 2.5rem;
+}
+h3 {
+    font-size: 2rem;
+}
+h4 {
+    font-size: 1.5rem;
+}
+h5 {
+    font-size: 1rem;
+}
+h6 {
+    font-size: 0.75rem;
+}
 
 article {
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    h3 { font-size: 1.5rem; }
-    h4 { font-size: 1.2rem; }
-    h5 { font-size: 0.8rem; }
-    h6 { font-size: 0.6rem; }
+    h1 {
+        font-size: 2.5rem;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    h3 {
+        font-size: 1.5rem;
+    }
+    h4 {
+        font-size: 1.2rem;
+    }
+    h5 {
+        font-size: 0.8rem;
+    }
+    h6 {
+        font-size: 0.6rem;
+    }
 }
 
 article {
@@ -162,7 +211,7 @@ article {
         word-break: break-word;
     }
 
-    >blockquote {
+    > blockquote {
         &:before {
             content: "◈";
             vertical-align: -0.1em;
@@ -183,7 +232,7 @@ li {
 }
 
 section {
-     margin: 4em 0;
+    margin: 4em 0;
 }
 
 .crates {
@@ -212,11 +261,153 @@ section {
             gap: 0.5em;
             align-items: center;
         }
-        p, pre {
+        p,
+        pre {
             margin: 0;
             font-size: 0.8em;
             line-height: 1.4;
         }
-       
+    }
+}
+
+// Nav menu
+
+.dropdown__title {
+    background-color: transparent;
+    border: none;
+    font-family: inherit;
+}
+
+nav {
+    background-color: $background-low;
+    padding: 0 1rem;
+    position: sticky;
+    top: 0;
+    display: grid;
+    place-items: center;
+
+    > ul {
+        grid-auto-flow: column;
+
+        > li {
+            margin: 0 0.5rem;
+
+            a,
+            .dropdown__title {
+                text-decoration: none;
+                text-align: start;
+                display: inline-block;
+                color: $primary;
+                font-size: 1.125rem;
+                &:focus {
+                    outline: none;
+                }
+            }
+
+            > a,
+            .dropdown__title {
+                padding: 1rem 0.5rem;
+                border-top: 3px solid transparent;
+                transition: 0.3s border-color;
+                &:hover,
+                &:focus {
+                    background-color: rgba($contrast-low, 0.1);
+                    border-top-color: $accent;
+                }
+            }
+        }
+    }
+
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+
+        li {
+            padding: 0;
+        }
+    }
+}
+
+.dropdown {
+    position: relative;
+
+    .dropdown__title {
+        display: inline-flex;
+        align-items: center;
+
+        &:after {
+            content: "";
+            border: 0.35rem solid transparent;
+            border-top-color: rgba($contrast-low, 0.4);
+            margin-left: 0.25em;
+            transform: translateY(0.15em);
+        }
+    }
+
+    .dropdown__menu {
+        position: absolute;
+        min-width: max-content;
+        left: 50%;
+        top: calc(100% - 0.25rem);
+        transition: 0.3s opacity;
+        transform: rotateX(-90deg) translateX(-50%);
+        transform-origin: top center;
+        visibility: hidden;
+        opacity: 0.3;
+        padding: 0.5em 0;
+        background-color: $background;
+        border-radius: 3px;
+        box-shadow: 0 0.15em 0.25em rgba($contrast, 0.08);
+
+        a {
+            color: $primary;
+            display: block;
+            padding: 0.5em 1em;
+            opacity: 0;
+            transition: 0.3s background-color;
+
+            &:hover {
+                background-color: rgba($contrast-low, 0.15);
+            }
+
+            &:focus {
+                background-color: rgba($contrast-low, 0.25);
+            }
+        }
+    }
+
+    &:after {
+        content: "";
+        border: 0.5rem solid transparent;
+        border-bottom-color: #fff;
+        position: absolute;
+        top: calc(100% - 1.25rem);
+        left: 50%;
+        transform: translateX(-50%);
+        opacity: 0;
+        will-change: opacity;
+    }
+
+    &:hover,
+    &:focus-within {
+        .dropdown__title {
+            border-top-color: $accent;
+        }
+
+        .dropdown__menu {
+            opacity: 1;
+            transform: rotateX(0) translateX(-50%);
+            visibility: visible;
+
+            a {
+                opacity: 1;
+            }
+        }
+
+        &:after {
+            opacity: 1;
+        }
     }
 }

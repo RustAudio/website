@@ -5,7 +5,7 @@
 
 {# About #}
 <section class="container">
-    <h2>About</h2>
+    <h2>Rust Audio</h2>
     {# Get about page content from the `about.md` file in content #}
     {% set about = get_page(path="about.md") %}
     {{ about.content | safe }}
@@ -13,164 +13,15 @@
 
 <section class="container">
     <h3>Community</h3>
-    <div style="display: flex; gap: 2em;">
-        <div style="display: flex; flex-direction: column;">
-            <h4 style="margin: 0;">Discord</h4>
-            <p>Join Rust Audio on Discord to keep up with audio development within the Rust ecosystem, get help with
-                DSP, collaborate on projects, and everything in-between.
-                </br>
-                <a class="button" style="margin-top: 1em" href={{config.extra.discord_invite}} target="_blank">Join
-                    Discord</a>
-            </p>
-        </div>
-        <a href={{config.extra.discord_invite}} class="hide-small" target="_blank">
-            <img style="border-radius: 24px"
-                src="https://discord.com/api/guilds/{{config.extra.discord_server_id}}/widget.png?style=banner3" />
-        </a>
+    <div style="display: flex; flex-direction: column;">
+        <p>Join Rust Audio on Discord to keep up with audio development within the Rust ecosystem, get help with
+            DSP, collaborate on projects, and everything in-between.
+        </p>
     </div>
-</section>
-
-<hr>
-
-{# Crates #}
-
-
-<section>
-    <div class="container-full">
-        <h2>Audio crates</h2>
-        <div class="filters tags"></div>
-    </div>
-    <div class="crates" id="crates">
-        {% set crates = load_data(path="content/crates.toml") %}
-        {% for source, crates in crates.crates | group_by(attribute="source") %}
-
-        {% for crate in crates %}
-
-        {# Obtain API data #}
-        {% if source == "github" %}
-        {# Get github API page to pull information #}
-        {% set data = load_data(url="https://api.github.com/repos/"~crate.key, format="json") %}
-        {% set name = data.name %}
-        {% set description = data.description %}
-        {% set url = data.svn_url %}
-        {# {% set keywords = data.topics %} #}
-
-        {% elif source == "crates" %}
-        {# Get crates API page to pull information #}
-        {% set data = load_data(url="https://crates.io/api/v1/crates/"~crate.key, format="json") %}
-        {% set name = data.crate.name %}
-        {% set description = data.crate.description %}
-        {% set url = "https://crates.io/crates/"~name %}
-        {# {% set keywords = data.crate.keywords %} #}
-
-        {% endif %}
-
-        <div class='crate' data-keywords='{{ crate.tags | join(sep=" ") }}'>
-            <a target=" _blank" href={{url}}>
-                <h4>
-                    <pre>{{ name }}</pre>
-                </h4>
-            </a>
-            <p>{{ description }}</p>
-
-            <div class="tags">
-                {% for tag in crate.tags %}
-                <span class="filter-tag tag" data-keyword={{tag}}>{{tag}}</span>
-                {% endfor %}
-            </div>
-            {# <div class="details">
-                <div class="stars">{{ crate.stargazers_count }} ☆</div>
-            </div> #}
-        </div>
-        {% endfor %}
-        {% endfor %}
-    </div>
-
-    {# <div class="crates">
-        {% set crates = load_data(url=config.extra.repos_url, format="json") %}
-        {% for crate in crates | sort(attribute="updated_at") | reverse %}
-        <div class="crate">
-            <a target="_blank" href={{crate.svn_url}}>
-                <h5>
-                    <pre>{{ crate.name }}</pre>
-                </h5>
-            </a>
-            <div class="details">
-                <div class="stars">{{ crate.stargazers_count }} ☆</div>
-            </div>
-        </div>
-        {% endfor %}
-    </div> #}
-    <a style="padding: 1em; display: inline-block;" href="https://lib.rs/multimedia/audio" target="_blank">See all
-        audio
-        crates ➜</a>
-</section>
-<hr>
-
-{# Resources #}
-<section class="container">
-    <h2>Resources</h2>
-
-    <article>
-        <h2>Audio plugin formats</h2>
-        {% set formats = load_data(path="content/formats.toml") %}
-        {% for format in formats.formats %}
-        <h3 style="display: inline-block;">
-            <a href="{{format.link}}" target="_blank">
-                <pre>{{format.name}}</pre>
-            </a>
-        </h3>
-
-
-        <span style="vertical-align: text-bottom; margin-left: 0.5em;">
-            {% if format.license.url %}<a target="_blank" class="license tag" href={{format.license.url}}>{% endif %}
-                {{format.license.name}}
-                {% if format.license.url %}
-            </a>{% endif %}
-        </span>
-
-        <p>{{format.description}}</p>
-
-        {% if format.resources %}
-        <h4>Resources</h4>
-        <ul>
-            {% for resource in format.resources %}
-            <a target="_blank" href={{resource.url}}>
-                <li>{{resource.name}}</li>
-            </a>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
-        {% if format.crates %}
-        <h4>Crates</h4>
-        <ul>
-            {% for crate in format.crates %}
-            <a target="_blank" href={{crate.url}}>
-                <li>{{crate.name}}</li>
-            </a>
-            {% endfor %}
-        </ul>
-        {% endif %}
-
-
-        {% endfor %}
-    </article>
-    <hr>
-    <article>
-        <h1>DSP resources</h1>
-        {% set resources = load_data(path="content/resources.toml") %}
-        {% for group, resources in resources.resources | group_by(attribute="category") %}
-        <h2>{{group | capitalize}}</h2>
-        <ul>
-            {% for resource in resources %}
-            <a target="_blank" href={{resource.url}}>
-                <li>{{resource.name}}</li>
-            </a>
-            {% endfor %}
-        </ul>
-        {% endfor %}
-    </article>
+    <a href={{config.extra.discord_invite}} aria-label="Join our Discord server" target="_blank">
+        <img style="border-radius: 24px"
+            src="https://discord.com/api/guilds/{{config.extra.discord_server_id}}/widget.png?style=banner2" />
+    </a>
 </section>
 
 <script>

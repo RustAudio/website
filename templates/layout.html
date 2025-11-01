@@ -19,16 +19,40 @@
     </head>
 
     <body>
-        <nav>
+        <nav aria-label="Main Navigation" style="display: flex;" >
             <a href="/"
                 >{% if config.extra.logo %}
                 <img src="{{config.extra.logo}}" />
                 {% endif %}
-                <h3>{{ config.title }}</h3>
+                <div class="hide-small">{{ config.title }}</div>
             </a>
+           <ul>
+             <li class="dropdown">
+               <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="community-dropdown">
+                   Community
+               </button>
+               <ul class="dropdown__menu" id="community-dropdown">
+                 <li><a href={{config.extra.discord_invite}} target="_blank">Discord 🔗</a></li>
+                 <li><a href="https://github.com/RustAudio" target="_blank">GitHub 🔗</a></li>
+                 {% set section = get_section(path="community/_index.md") %}
+                 {% for page in section.pages %}
+                 <li><a href={{page.path}}>{{page.title}}</a></li>
+                 {% endfor %}
+               </ul>
+             </li>
+             <li class="dropdown">
+               <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="resources-dropdown">
+                   Resources
+               </button>
+               <ul class="dropdown__menu" id="resources-dropdown">
+                    <li><a href="https://github.com/BillyDM/Awesome-Audio-DSP" target="_blank">Awesome Audio DSP 🔗</a></li>
+                    <li><a href="/resources">More DSP resources</a></li>
+               </ul>
+             </li>
+           </ul>
+         </nav>
 
-            <a href="/community"> Community </a>
-        </nav>
+
         {% block content %}{% endblock content %} {% block extra_body %}{%
         endblock extra_body %} {% block footer %}{% endblock footer %}
     </body>
