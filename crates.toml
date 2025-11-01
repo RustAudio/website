@@ -1,0 +1,110 @@
+[[crates]]
+key = "fundsp"
+source = "crates"
+tags = ["DSP"]
+
+[[crates]]
+key = "cpal"
+source = "crates"
+tags = ["devices"]
+
+[[crates]]
+key = "coremidi"
+source = "crates"
+tags = ["MIDI"]
+
+[[crates]]
+key = "wrl/baseplug"
+source = "github"
+tags = ["frameworks","VST2"]
+
+[[crates]]
+key = "RustAudio/baseview"
+source = "github"
+tags = ["windowing","GUI"]
+
+[[crates]]
+key = "robbert-vdh/nih-plug"
+source = "github"
+tags = ["frameworks","VST3","CLAP"]
+
+[[crates]]
+key = "glowcoil/clap-sys"
+source = "github"
+tags = ["bindings","CLAP"]
+
+[[crates]]
+key = "RustyDAW/rusty-daw-io"
+source = "github"
+tags = ["devices"]
+
+[[crates]]
+key = "RustyDAW/creek"
+source = "github"
+tags = ["streaming"]
+
+[[crates]]
+key = "MeadowlarkDAW/Meadowlark"
+source = "github"
+tags = ["DAWs"]
+
+[[crates]]
+key = "WeirdConstructor/HexoSynth"
+source = "github"
+tags = ["synthesizer", "plugin"]
+
+[[crates]]
+key = "vizia/vizia"
+source = "github"
+tags = ["GUI", "frameworks"]
+
+[[crates]]
+key = "chaosprint/glicol"
+source = "github"
+tags = ["languages", "DSP"]
+
+[[crates]]
+key = "rodio"
+source = "crates"
+tags = ["playback"]
+
+[[crates]]
+key = "kira"
+source = "crates"
+tags = ["games", "playback"]
+
+[[crates]]
+key = "awedio"
+source = "crates"
+tags = ["playback", "embedded"]
+
+[[crates]]
+key = "rubato"
+source = "crates"
+tags = ["resampling", "DSP"]
+
+[[crates]]
+key = "realfft"
+source = "crates"
+tags = ["FFT", "DSP"]
+
+[[crates]]
+key = "jack"
+source = "crates"
+tags = ["devices"]
+
+[[crates]]
+key = "alisomay/libpd-rs"
+source = "github"
+tags = ["languages", "DSP"]
+
+[[crates]]
+key = "rustfft"
+source = "crates"
+tags = ["FFT", "DSP"]
+
+[[crates]]
+key = "hound"
+source = "crates"
+tags = ["streaming", "frameworks"]
+

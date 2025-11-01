@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://rust.audio/</loc>
+    </url>
+    <url>
+        <loc>https://rust.audio/about/</loc>
+    </url>
+    <url>
+        <loc>https://rust.audio/community/</loc>
+    </url>
+    <url>
+        <loc>https://rust.audio/community/ai/</loc>
+    </url>
+    <url>
+        <loc>https://rust.audio/community/rules/</loc>
+    </url>
+    <url>
+        <loc>https://rust.audio/resources/</loc>
+    </url>
+</urlset>
